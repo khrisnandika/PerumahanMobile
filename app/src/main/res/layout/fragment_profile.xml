@@ -52,10 +52,11 @@
         android:layout_height="48dp"
         android:layout_below="@id/txtEmail"
         android:layout_centerHorizontal="true"
-        app:backgroundTint="@color/blue"
+        android:backgroundTint="@color/blue"
         android:background="@drawable/rounded_btn"
         android:layout_marginTop="26dp"
         android:text="Edit Profile"
+        android:textColor="@color/white"
         android:fontFamily="@font/poppinssemibold"
         android:textSize="13sp"
         />
