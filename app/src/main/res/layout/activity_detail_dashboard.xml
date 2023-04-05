@@ -62,36 +62,165 @@ android:layout_centerHorizontal="true"
             android:layout_toRightOf="@+id/ringkasan"
             android:layout_below="@+id/action_image"/>
 
-   <RelativeLayout
-       android:id="@+id/relative"
-       android:layout_width="60dp"
+   <LinearLayout
+       android:id="@+id/ukuranlayout"
+       android:layout_marginStart="10dp"
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/ringkasan">
+       android:layout_below="@+id/ringkasan"
+       android:orientation="horizontal"
+       android:gravity="center_horizontal"
+       android:layout_marginTop="20dp">
        <ImageView
+
+           android:id="@+id/ukuranimage"
            android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_height="30dp"
            android:src="@drawable/ukuran"
            />
        <LinearLayout
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:orientation="vertical"
-
+           android:layout_marginStart="5dp"
            >
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Ukuran"
-           android:textSize="9sp"
+           android:textSize="12sp"
            android:textStyle="bold"
            />
            <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="9x4"
-           android:textSize="7sp"
+           android:textSize="10sp"
            />
        </LinearLayout>
-   </RelativeLayout>
-
+       <ImageView
+           android:layout_marginLeft="40dp"
+           android:id="@+id/uangimage"
+           android:layout_width="wrap_content"
+           android:layout_height="30dp"
+           android:src="@drawable/uangicon"
+           />
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginStart="5dp"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Ukuran"
+               android:textSize="12sp"
+               android:textStyle="bold"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="9x4"
+               android:textSize="10sp"
+               />
+       </LinearLayout>
+       <ImageView
+           android:layout_marginLeft="40dp"
+           android:id="@+id/14icon"
+           android:layout_width="wrap_content"
+           android:layout_height="30dp"
+           android:src="@drawable/angkaicon"
+           />
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginStart="5dp"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Ukuran"
+               android:textSize="12sp"
+               android:textStyle="bold"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="9x4"
+               android:textSize="10sp"
+               />
+       </LinearLayout>
+   </LinearLayout>
+    <LinearLayout
+        android:id="@+id/textlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ukuranlayout"
+        android:orientation="vertical">
+    <TextView
+        android:layout_marginTop="33dp"
+        android:id="@+id/judultext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem Ipsum"
+        android:textStyle="bold"
+        android:layout_marginLeft="38dp"
+        />
+        <TextView
+        android:id="@+id/isitext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the."
+        android:textStyle="bold"
+        android:layout_marginLeft="38dp"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/textlayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textlayout1"
+        android:orientation="vertical">
+    <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/judultext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lorem Ipsum"
+        android:textStyle="bold"
+        android:layout_marginLeft="38dp"
+        />
+        <TextView
+        android:id="@+id/isitext"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the."
+        android:textStyle="bold"
+        android:layout_marginLeft="38dp"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/textlayout2">
+        <Button
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_btn"
+            app:backgroundTint="#50C2C9"
+            android:text="Beli Sekarang"/>
+        <Button
+            android:layout_marginLeft="16dp"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_btn"
+            app:backgroundTint="#29A71A"
+            android:drawableLeft="@drawable/waicon"
+            />
+    </LinearLayout>
 </RelativeLayout>
