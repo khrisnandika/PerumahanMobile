@@ -1,16 +1,390 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UploadFragment"
+    android:orientation="vertical"
+    android:layout_marginStart="22dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layoutNavbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload"
-        android:layout_centerInParent="true"
-        />
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp">
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/back_24"/>-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Rumah"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="16dp"
+            android:textColor="@color/fontColor"
+             />
+    </LinearLayout>
 
-</RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginEnd="22dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto Rumah"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="@color/fontColor"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="#FF5050"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:layout_width="63dp"
+                    android:layout_height="63dp"
+                    android:background="#D9D9D9"
+                    android:src="@drawable/ic_add"
+                    />
+                <ImageView
+                    android:layout_width="63dp"
+                    android:layout_height="63dp"
+                    android:background="#D9D9D9"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/ic_add"
+                    />
+                <ImageView
+                    android:layout_width="63dp"
+                    android:layout_height="63dp"
+                    android:background="#D9D9D9"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/ic_add"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tipe Rumah"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="@color/fontColor"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="#FF5050"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/fieldTipe"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/txt2"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/secondary"
+                android:hint="Tipe Rumah"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:textColor="#8A8A8A"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="18dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Harga Rumah"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="@color/fontColor"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="#FF5050"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/fieldHarga"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/txt2"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/secondary"
+                android:hint="Harga Rumah"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:textColor="#8A8A8A"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="18dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Luas Bangunan"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="@color/fontColor"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="#FF5050"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/fieldLuasbangunan"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/txt2"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/secondary"
+                android:hint="Luas Rumah"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:textColor="#8A8A8A"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="18dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Luas Tanah"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="@color/fontColor"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="#FF5050"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/fieldLuastanah"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@+id/txt2"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/secondary"
+                android:hint="Luas Tanah"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:textColor="#8A8A8A"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="18dp"
+                />
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Total Kamar"-->
+<!--                    android:fontFamily="@font/poppinssemibold"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:textColor="@color/fontColor"-->
+<!--                    />-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="*"-->
+<!--                    android:fontFamily="@font/poppinssemibold"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:textColor="#FF5050"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/fieldTotalkamar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_below="@+id/txt2"-->
+<!--                android:background="@drawable/rounded_btn"-->
+<!--                android:backgroundTint="@color/secondary"-->
+<!--                android:hint="Total Kamar"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="#8A8A8A"-->
+<!--                android:fontFamily="@font/poppinsregular"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:paddingLeft="18dp"-->
+<!--                />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Total Kamar Mandi"-->
+<!--                    android:fontFamily="@font/poppinssemibold"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:textColor="@color/fontColor"-->
+<!--                    />-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="*"-->
+<!--                    android:fontFamily="@font/poppinssemibold"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:textColor="#FF5050"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/fieldTotalkamarmandi"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_below="@+id/txt2"-->
+<!--                android:background="@drawable/rounded_btn"-->
+<!--                android:backgroundTint="@color/secondary"-->
+<!--                android:hint="Total Kamar Mandi"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="#8A8A8A"-->
+<!--                android:fontFamily="@font/poppinsregular"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:paddingLeft="18dp"-->
+<!--                />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="@color/fontColor"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="12sp"
+                    android:textColor="#FF5050"
+                    />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/fieldDeskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="208dp"
+                android:inputType="textMultiLine"
+                android:maxLength="4096"
+                android:minLines="1"
+                android:maxLines="11"
+                android:scrollbars="vertical"
+                android:layout_below="@+id/txt2"
+                android:background="@drawable/rounded_btn"
+                android:backgroundTint="@color/secondary"
+                android:hint="Deskripsi"
+                android:textSize="12sp"
+                android:textColor="#8A8A8A"
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="18dp"
+                android:paddingTop="12dp"
+                android:gravity="top"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/rounded_btn"
+                app:backgroundTint="@color/blue"
+                android:text="Simpan"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppinssemibold"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

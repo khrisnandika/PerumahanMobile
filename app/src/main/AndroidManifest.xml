@@ -16,9 +16,6 @@
             android:name=".EditProfile"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
-            android:exported="false" />
-        <activity
             android:name=".Register"
             android:exported="false">
             <meta-data
