@@ -14,91 +14,175 @@
         android:layout_height="193dp"
         android:background="@drawable/rounded_profilepage"
         />
-    <TextView
-        android:id="@+id/editprofiletxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Edit Profile"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        />
-    <ImageView
-        android:id="@+id/backbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/arrowback"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:clickable="true"
-        />
-    <ImageView
-        android:id="@+id/avataricon"
-        android:layout_width="136dp"
-        android:layout_height="128dp"
-        android:src="@drawable/avatar_profile"
-        android:layout_below="@id/editprofiletxt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        />
-    <LinearLayout
-        android:id="@+id/linear1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_below="@id/avataricon"
-        android:orientation="vertical"
-        android:paddingLeft="24dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Informasi Data Diri"
-            android:textColor="#50C2C9"/>
-        <EditText
-            android:layout_width="360dp"
-            android:layout_height="48dp"
-            android:hint="Nama Lengkap"/>
-        <EditText
-            android:layout_width="360dp"
-            android:layout_height="48dp"
-            android:hint="Email"/>
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alamat Domisili"
-            android:textColor="#50C2C9"/>
-        <EditText
-            android:layout_width="360dp"
-            android:layout_height="48dp"
-            android:hint="Kode Pos"
-            android:inputType="number"/>
-        <EditText
-            android:layout_width="360dp"
-            android:layout_height="48dp"
-            android:hint="RT"
-            android:inputType="number"/>
-        <EditText
-            android:layout_width="360dp"
-            android:layout_height="48dp"
-            android:hint="RW"
-            android:inputType="number"/>
-        <EditText
-            android:layout_width="360dp"
-            android:layout_height="48dp"
-            android:hint="Detail Alamat"
-            android:inputType="number"/>
 
+    <LinearLayout
+        android:id="@+id/layoutNavbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="22dp">
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_24"
+                app:tint="@color/white"
+                android:clickable="true"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Profil"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                />
     </LinearLayout>
-<Button
-    android:layout_width="336dp"
-    android:layout_height="50dp"
-    android:layout_below="@id/linear1"
-    android:layout_marginTop="30dp"
-    android:layout_centerHorizontal="true"
-    android:text="Simpan"
-    app:backgroundTint="#3F60F6"
-    android:background="@drawable/rounded_btn"/>
+    
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="119dp"
+        android:layout_height="119dp"
+        android:layout_below="@+id/layoutNavbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/avatar_profile"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imgProfile"
+        android:layout_marginTop="36dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp">
+
+            <LinearLayout
+                android:id="@+id/layoutBiodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informasi Data Diri"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="13sp"
+                    android:textColor="@color/blue"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Lengkap"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="nama lengkap"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="email"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat Domisili"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="13sp"
+                    android:textColor="@color/blue"
+                    android:layout_marginTop="18dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kode Pos"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="kode Pos"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RT"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="rt"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RW"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="rw"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Alamat"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="detail alamat"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="Simpan"
+                    android:fontFamily="@font/poppinssemibold"
+                    app:backgroundTint="@color/blue"
+                    android:background="@drawable/rounded_btn"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
