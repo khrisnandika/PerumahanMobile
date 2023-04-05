@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hi, Krisna"
-        android:fontFamily="@font/montserratbold"
+        android:fontFamily="@font/poppinsbold"
         android:layout_marginTop="57dp"
         android:textColor="@color/fontColor"
         android:layout_marginLeft="26dp"
@@ -22,10 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="A great day to get better"
-        android:layout_marginTop="6dp"
         android:layout_below="@+id/txt1"
         android:textColor="@color/fontColor"
-        android:fontFamily="@font/montserratregular"
+        android:fontFamily="@font/poppinsregular"
         android:layout_marginLeft="26dp"
         />
     <ImageView
@@ -55,75 +54,48 @@
         />
 
     <LinearLayout
+        android:id="@+id/layoutButton"
         android:layout_width="match_parent"
-        android:layout_height="71dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/fieldSearch"
-        android:orientation="horizontal">
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="19dp"
+        android:background="@drawable/rounded_btn"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:backgroundTint="@color/white"
+        android:elevation="2dp">
 
-        <Button
-            android:layout_width="53dp"
-            android:layout_height="40dp"
-            app:backgroundTint="@color/white"
-            android:shadowColor="@color/black"
-            android:elevation="3dp"
+        <TextView
+            android:id="@+id/tabItem1"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="1.5"
+            android:text="Dijual"
+            android:gravity="center"
+            android:fontFamily="@font/poppinsregular"
+            android:textColor="@color/white"
             android:background="@drawable/rounded_btn"
-            android:drawableLeft="@drawable/ic_filter"
-            android:layout_marginLeft="26dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/filter"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
             />
-        <Button
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            app:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/icons_home"
-            android:paddingLeft="4dp"
-            android:shadowColor="@color/black"
-            android:elevation="3dp"
-            android:background="@drawable/rounded_btn"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:text="9x4"
-            android:textSize="13sp"
-            android:textColor="@color/fontColor"
-            android:fontFamily="@font/poppinssemibold"
+        <TextView
+            android:id="@+id/tabItem2"
+            android:layout_width="0dp"
+            android:layout_height="37dp"
+            android:layout_weight="1.5"
+            android:text="Disewakan"
+            android:gravity="center"
+            android:fontFamily="@font/poppinsregular"
+            android:textColor="#AAAAAA"
             />
-        <Button
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            app:backgroundTint="@color/white"
-            android:shadowColor="@color/black"
-            android:elevation="3dp"
-            android:background="@drawable/rounded_btn"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:text="9x4"
-            android:textSize="13sp"
-            android:textColor="@color/fontColor"
-            android:fontFamily="@font/poppinssemibold"
-            />
-        <Button
-            android:layout_width="85dp"
-            android:layout_height="40dp"
-            app:backgroundTint="@color/white"
-            android:shadowColor="@color/black"
-            android:elevation="3dp"
-            android:background="@drawable/rounded_btn"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:text="9x4"
-            android:textSize="13sp"
-            android:textColor="@color/fontColor"
-            android:fontFamily="@font/poppinssemibold"
-            />
+
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layoutButton"/>
 
 </RelativeLayout>
