@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfile">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#0A5896"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="193dp"
+        android:background="@drawable/rounded_profilepage"
+        />
+    <TextView
+        android:id="@+id/editprofiletxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        />
+    <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrowback"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"
+        />
+    <ImageView
+        android:id="@+id/avataricon"
+        android:layout_width="136dp"
+        android:layout_height="128dp"
+        android:src="@drawable/avatar_profile"
+        android:layout_below="@id/editprofiletxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        />
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_below="@id/avataricon"
+        android:orientation="vertical"
+        android:paddingLeft="24dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Informasi Data Diri"
+            android:textColor="#50C2C9"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:hint="Nama Lengkap"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:hint="Email"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat Domisili"
+            android:textColor="#50C2C9"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:hint="Kode Pos"
+            android:inputType="number"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:hint="RT"
+            android:inputType="number"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:hint="RW"
+            android:inputType="number"/>
+        <EditText
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:hint="Detail Alamat"
+            android:inputType="number"/>
+
+    </LinearLayout>
+<Button
+    android:layout_width="336dp"
+    android:layout_height="50dp"
+    android:layout_below="@id/linear1"
+    android:layout_marginTop="30dp"
+    android:layout_centerHorizontal="true"
+    android:text="Simpan"
+    app:backgroundTint="#3F60F6"
+    android:background="@drawable/rounded_btn"/>
+
+</RelativeLayout>
