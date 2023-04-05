@@ -7,15 +7,24 @@
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:background="#0A5896"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/rounded_profilepage" />
     <TextView
         android:id="@+id/txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hi, Krisna"
         android:fontFamily="@font/poppinsbold"
-        android:layout_marginTop="57dp"
-        android:textColor="@color/fontColor"
+        android:layout_marginTop="28dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="26dp"
+        android:textSize="15dp"
         />
     <TextView
         android:id="@+id/txt2"
@@ -23,43 +32,70 @@
         android:layout_height="wrap_content"
         android:text="A great day to get better"
         android:layout_below="@+id/txt1"
-        android:textColor="@color/fontColor"
+        android:textColor="@color/white"
         android:fontFamily="@font/poppinsregular"
         android:layout_marginLeft="26dp"
+        android:textSize="10dp"
         />
+
+    <LinearLayout
+        android:id="@+id/layoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt2"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/fieldSearch"
+            android:layout_width="278dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/txt2"
+            android:background="@drawable/rounded"
+            android:backgroundTint="@color/secondary"
+            android:hint="Cari Disini"
+            android:gravity="center_vertical"
+            android:textSize="13sp"
+            android:paddingLeft="54dp"
+            android:textColor="#8A8A8A"
+            android:fontFamily="@font/poppinsregular"
+            android:layout_marginLeft="26dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFilter"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_btn"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="30dp"
+            app:backgroundTint="@color/secondary"
+            app:icon="@drawable/filter"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="25dp"
+            app:iconTint="@color/black"
+            />
+    </LinearLayout>
+
     <ImageView
+        android:id="@+id/imgProfile"
         android:layout_width="47dp"
         android:layout_height="47dp"
         android:src="@drawable/avatar"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="26dp"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="26dp"
         />
-    <EditText
-        android:id="@+id/fieldSearch"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_below="@+id/txt2"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/rounded"
-        android:backgroundTint="@color/secondary"
-        android:hint="Cari Disini"
-        android:gravity="center_vertical"
-        android:textSize="13sp"
-        android:paddingLeft="54dp"
-        android:textColor="#8A8A8A"
-        android:fontFamily="@font/poppinsregular"
-        android:layout_marginLeft="26dp"
-        android:layout_marginRight="26dp"
-        />
+
 
     <LinearLayout
         android:id="@+id/layoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fieldSearch"
+        android:layout_below="@+id/layoutSearch"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="19dp"
         android:background="@drawable/rounded_btn"
