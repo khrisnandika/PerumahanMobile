@@ -221,6 +221,7 @@ android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_btn"
             app:backgroundTint="#29A71A"
             android:drawableLeft="@drawable/waicon"
+            android:hint="wa"
             />
     </LinearLayout>
 </RelativeLayout>
