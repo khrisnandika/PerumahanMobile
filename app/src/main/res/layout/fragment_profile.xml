@@ -183,7 +183,7 @@
                 android:id="@+id/txtPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Privacy Policy"
+                android:text="Kebijakan Pribadi"
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="12sp"
@@ -211,7 +211,7 @@
                 android:id="@+id/txtTerms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Terms and Conditions"
+                android:text="Syarat dan Ketentuan"
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="12sp"
@@ -245,7 +245,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/icLogout"
                 android:fontFamily="@font/poppinssemibold"
-                android:text="Informasi Aplikasi"
+                android:text="Keluar"
                 android:textSize="12sp" />
             <ImageView
                 android:layout_width="wrap_content"
