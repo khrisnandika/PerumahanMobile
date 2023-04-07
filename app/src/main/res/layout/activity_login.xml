@@ -70,7 +70,7 @@
             android:layout_marginTop="22dp"
             android:layout_below="@+id/txt2"
             android:layout_gravity="center"
-            android:hint="Enter your email"
+            android:hint="Enter your Password"
             android:textColorHint="@color/black"
             android:paddingLeft="30dp"
             android:textSize="13dp"
@@ -121,6 +121,7 @@
             android:textSize="12dp"
             />
         <TextView
+            android:id="@+id/Treg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"

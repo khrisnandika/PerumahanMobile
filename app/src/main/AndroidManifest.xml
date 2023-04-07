@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,17 +17,10 @@
             android:name=".EditProfile"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".DetailDashboard"
             android:exported="false" />
         <activity
-            android:name=".Register"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Login"
+            android:name=".Dashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -40,7 +34,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".DetailDashboard"
+            android:name=".Login"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Register"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
