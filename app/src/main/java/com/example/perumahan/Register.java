@@ -2,7 +2,6 @@ package com.example.perumahan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -34,17 +33,17 @@ public class Register extends AppCompatActivity {
     TextView TextLog;
     Button Bregister;
     ProgressDialog progressDialog;
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        username = (EditText) findViewById(R.id.txtField1);
-        email = (EditText) findViewById(R.id.txtField2);
-        password = (EditText) findViewById(R.id.txtField3);
-        confirmPass = (EditText) findViewById(R.id.txtField4);
-        TextLog = (TextView) findViewById(R.id.TextLog);
-        Bregister = (Button) findViewById(R.id.Tregister);
+        username = findViewById(R.id.txtField1);
+        email = findViewById(R.id.txtField2);
+        password = findViewById(R.id.txtField3);
+        confirmPass = findViewById(R.id.txtField4);
+        TextLog = findViewById(R.id.TextLog);
+        Bregister = findViewById(R.id.Tregister);
         progressDialog = new ProgressDialog(Register.this);
 
         TextLog.setOnClickListener(new View.OnClickListener() {
@@ -74,55 +73,55 @@ public class Register extends AppCompatActivity {
         });
     }
 
-        public void CreateDataToServer(final String username, final String email, final String password) {
-            if (checkNetworkConnection()) {
-                progressDialog.show();
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.SERVER_REGISTER_URL,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    String resp = jsonObject.getString("server_response");
-                                    if (resp.equals("[{\"status\":\"OK\"}]")) {
-                                        Toast.makeText(getApplicationContext(), "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
-                                        Intent loginIntent = new Intent(Register.this, Login.class);
-                                        startActivity(loginIntent);
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+    public void CreateDataToServer(final String username, final String email, final String password) {
+        if (checkNetworkConnection()) {
+            progressDialog.show();
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.SERVER_REGISTER_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                String resp = jsonObject.getString("server_response");
+                                if (resp.equals("[{\"status\":\"OK\"}]")) {
+                                    Toast.makeText(getApplicationContext(), "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                                    Intent loginIntent = new Intent(Register.this, Login.class);
+                                    startActivity(loginIntent);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_SHORT).show();
                                 }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("username", username);
-                        params.put("email", email);
-                        params.put("password", password);
-                        return params;
-                    }
-                };
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("username", username);
+                    params.put("email", email);
+                    params.put("password", password);
+                    return params;
+                }
+            };
 
-                VolleyConnection.getInstance(Register.this).addToRequestQue(stringRequest);
+            VolleyConnection.getInstance(Register.this).addToRequestQue(stringRequest);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressDialog.cancel();
-                    }
-                }, 2000);
-            } else {
-                Toast.makeText(getApplicationContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show();
-            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.cancel();
+                }
+            }, 2000);
+        } else {
+            Toast.makeText(getApplicationContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show();
         }
+    }
     public boolean checkNetworkConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();

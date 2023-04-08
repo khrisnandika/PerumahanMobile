@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DijualFragment">
+    tools:context=".DijualFragment"
+    android:layout_marginLeft="26dp"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rumahsewaRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Dijual"
-        android:gravity="center"/>
+        tools:listitem="@layout/list_disewakan"
+        />
 
 </RelativeLayout>
