@@ -17,6 +17,11 @@
         android:background="@drawable/rounded_profilepage"
         />
     <ImageView
+        android:layout_width="390dp"
+        android:layout_height="142dp"
+        android:src="@drawable/shape2"
+        />
+    <ImageView
         android:id="@+id/avatar_profile"
         android:layout_width="118dp"
         android:layout_height="118dp"
@@ -133,7 +138,9 @@
                 android:layout_alignParentEnd="true"
                 />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/btnInformasiAplikasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -230,7 +237,9 @@
                 android:layout_alignParentEnd="true"
                 />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
