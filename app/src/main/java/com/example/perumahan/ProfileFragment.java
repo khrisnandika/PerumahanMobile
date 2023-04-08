@@ -15,7 +15,7 @@ public class ProfileFragment extends Fragment {
 
 
     Button editBtn;
-    RelativeLayout btnKataSandi;
+    RelativeLayout btnKataSandi, btnInformasi, btnLogout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,6 +25,8 @@ public class ProfileFragment extends Fragment {
 
         editBtn = view.findViewById(R.id.btnEdit);
         btnKataSandi = view.findViewById(R.id.btnKataSandi);
+        btnInformasi = view.findViewById(R.id.btnInformasiAplikasi);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         btnKataSandi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,10 +36,26 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        btnInformasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Informasi.class);
+                startActivity(intent);
+            }
+        });
+
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditProfile.class);
+                startActivity(intent);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Login.class);
                 startActivity(intent);
             }
         });

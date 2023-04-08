@@ -380,7 +380,8 @@
                 app:backgroundTint="@color/blue"
                 android:text="Simpan"
                 android:textSize="15sp"
-                android:fontFamily="@font/poppinssemibold"/>
+                android:fontFamily="@font/poppinssemibold"
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 

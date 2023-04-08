@@ -9,7 +9,7 @@
     android:layout_marginStart="22dp"
     android:layout_marginEnd="22dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layoutNavbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,14 +24,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload Rumah"
+            android:text="Informasi Aplikasi"
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:fontFamily="@font/poppinssemibold"
             android:textSize="16dp"
             android:textColor="@color/fontColor"
             />
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -45,13 +45,13 @@
             android:textSize="35sp"
             android:fontFamily="@font/poppinssemibold"
             android:textColor="@color/fontColor"
-            android:layout_marginTop="91dp"/>
+            android:layout_marginTop="20dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Perumahan Taraktakdung"
             android:gravity="center"
-            android:layout_marginTop="139dp"
+            android:layout_marginTop="65dp"
             android:textSize="12sp"
             android:fontFamily="@font/poppinsregular"
             android:textColor="@color/fontColor"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Perumahan Versi 1.0 \n Dikembangkan Oleh Mahasiswa \n Politeknik Negeri Jember"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="170dp"
         android:fontFamily="@font/poppinssemibold"
         android:textSize="12sp"
         android:textColor="@color/fontColor"

@@ -14,15 +14,20 @@
         android:layout_height="193dp"
         android:background="@drawable/rounded_profilepage"
         />
-
-    <LinearLayout
+    <ImageView
+        android:layout_width="390dp"
+        android:layout_height="138dp"
+        android:src="@drawable/shape3"
+        />
+    <RelativeLayout
         android:id="@+id/layoutNavbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:layout_marginStart="22dp">
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp">
             <ImageView
                 android:id="@+id/imgBack"
                 android:layout_width="wrap_content"
@@ -34,13 +39,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit Profil"
-                android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="16dp"
                 android:textColor="@color/white"
                 />
-    </LinearLayout>
+    </RelativeLayout>
     
     <ImageView
         android:id="@+id/imgProfile"
