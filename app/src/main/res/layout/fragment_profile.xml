@@ -17,9 +17,15 @@
         android:background="@drawable/rounded_profilepage"
         />
     <ImageView
-        android:layout_width="390dp"
+        android:layout_width="179dp"
         android:layout_height="142dp"
         android:src="@drawable/shape2"
+        />
+    <ImageView
+        android:layout_width="179dp"
+        android:layout_height="142dp"
+        android:src="@drawable/shape22"
+        android:layout_alignParentEnd="true"
         />
     <ImageView
         android:id="@+id/avatar_profile"
