@@ -9,11 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
 import android.widget.RelativeLayout;
->>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
 
 public class ProfileFragment extends Fragment {
 
@@ -73,8 +70,6 @@ public class ProfileFragment extends Fragment {
 //                }
             }
         });
-<<<<<<< HEAD
-=======
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +79,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
->>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
         return view;
     }
     public void onClick(View view){
