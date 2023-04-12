@@ -1,5 +1,6 @@
 package com.example.perumahan;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 
 
 public class HomeFragment extends Fragment {
-
+    TextView userName;
     private TextView tab1, tab2;
     private int selectedNumber = 1;
 
@@ -27,6 +28,17 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        if(SharedPrefManager.getInstance(getActivity()).isLoggedIn()){
+            userName = view.findViewById(R.id.txt1);
+            User user = SharedPrefManager.getInstance(getActivity()).getUser();
+            userName.setText(user.getName());
+        }
+        else{
+            Intent intent = new Intent(getActivity(),Login.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
 
         tab1 = view.findViewById(R.id.tabItem1);
         tab2 = view.findViewById(R.id.tabItem2);
