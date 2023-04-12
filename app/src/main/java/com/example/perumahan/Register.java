@@ -2,7 +2,12 @@ package com.example.perumahan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint;
+=======
+import android.app.ProgressDialog;
+import android.content.Context;
+>>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,15 +32,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity {
+<<<<<<< HEAD
     EditText editTextUsername, editTextEmail, editTextPassword;
     RadioGroup radioGroupGender;
     ProgressBar progressBar;
     @SuppressLint("MissingInflatedId")
+=======
+    EditText username,email,password,confirmPass;
+    TextView TextLog;
+    Button Bregister;
+    ProgressDialog progressDialog;
+
+>>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+<<<<<<< HEAD
         progressBar = findViewById(R.id.progressBar);
+=======
+        username = findViewById(R.id.txtField1);
+        email = findViewById(R.id.txtField2);
+        password = findViewById(R.id.txtField3);
+        confirmPass = findViewById(R.id.txtField4);
+        TextLog = findViewById(R.id.TextLog);
+        Bregister = findViewById(R.id.Tregister);
+        progressDialog = new ProgressDialog(Register.this);
+>>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
@@ -67,6 +90,7 @@ public class Register extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
     private void registerUser() {
         final String username = editTextUsername.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
@@ -146,6 +170,62 @@ public class Register extends AppCompatActivity {
                 return params;
             }
         };
+=======
+    public void CreateDataToServer(final String username, final String email, final String password) {
+        if (checkNetworkConnection()) {
+            progressDialog.show();
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.SERVER_REGISTER_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                String resp = jsonObject.getString("server_response");
+                                if (resp.equals("[{\"status\":\"OK\"}]")) {
+                                    Toast.makeText(getApplicationContext(), "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
+                                    Intent loginIntent = new Intent(Register.this, Login.class);
+                                    startActivity(loginIntent);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), resp, Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("username", username);
+                    params.put("email", email);
+                    params.put("password", password);
+                    return params;
+                }
+            };
+
+            VolleyConnection.getInstance(Register.this).addToRequestQue(stringRequest);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.cancel();
+                }
+            }, 2000);
+        } else {
+            Toast.makeText(getApplicationContext(), "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public boolean checkNetworkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
+    }
+>>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }

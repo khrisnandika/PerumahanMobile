@@ -9,12 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.TextView;
+=======
+import android.widget.RelativeLayout;
+>>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
 
 public class ProfileFragment extends Fragment {
 
     TextView logout,userName,email;
     Button editBtn;
+    RelativeLayout btnKataSandi, btnInformasi, btnLogout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +43,25 @@ public class ProfileFragment extends Fragment {
         }
 
         editBtn = view.findViewById(R.id.btnEdit);
+        btnKataSandi = view.findViewById(R.id.btnKataSandi);
+        btnInformasi = view.findViewById(R.id.btnInformasiAplikasi);
+        btnLogout = view.findViewById(R.id.btnLogout);
+
+        btnKataSandi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), KataSandi.class);
+                startActivity(intent);
+            }
+        });
+
+        btnInformasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Informasi.class);
+                startActivity(intent);
+            }
+        });
 
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +73,18 @@ public class ProfileFragment extends Fragment {
 //                }
             }
         });
+<<<<<<< HEAD
+=======
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Login.class);
+                startActivity(intent);
+            }
+        });
+
+>>>>>>> ffe4a73ee3ba04045daba129160a9610aa0e97f8
         return view;
     }
     public void onClick(View view){

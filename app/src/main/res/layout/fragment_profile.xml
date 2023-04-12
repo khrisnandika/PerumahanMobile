@@ -13,8 +13,19 @@
         android:background="#0A5896"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="286dp"
+        android:layout_height="275dp"
         android:background="@drawable/rounded_profilepage"
+        />
+    <ImageView
+        android:layout_width="179dp"
+        android:layout_height="142dp"
+        android:src="@drawable/shape2"
+        />
+    <ImageView
+        android:layout_width="179dp"
+        android:layout_height="142dp"
+        android:src="@drawable/shape22"
+        android:layout_alignParentEnd="true"
         />
     <ImageView
         android:id="@+id/avatar_profile"
@@ -23,7 +34,7 @@
         android:src="@drawable/avatar_profile"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="35dp"
         />
     <TextView
         android:id="@+id/txtName"
@@ -64,22 +75,26 @@
     <LinearLayout
         android:id="@+id/layout1"
         android:layout_width="330dp"
-        android:layout_height="127dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btnEdit"
         android:background="@drawable/rounded"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/secondary"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="35dp"
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/btnKataSandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="13dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp">
             <ImageView
                 android:id="@+id/icUbahSandi"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ubah_sandi_logo"/>
             <TextView
                 android:id="@+id/txtUbahSandi"
@@ -102,12 +117,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
             <ImageView
                 android:id="@+id/icRumah"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/data_upload"/>
             <TextView
                 android:id="@+id/txtRumah"
@@ -127,16 +142,19 @@
                 android:layout_alignParentEnd="true"
                 />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/btnInformasiAplikasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginTop="13dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
             <ImageView
                 android:id="@+id/icInformasi"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/informasi_aplikasi"/>
             <TextView
                 android:id="@+id/txtInformasi"
@@ -160,7 +178,7 @@
 
     <LinearLayout
         android:layout_width="330dp"
-        android:layout_height="127dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/layout1"
         android:background="@drawable/rounded"
         android:layout_centerHorizontal="true"
@@ -171,11 +189,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="13dp">
+            android:layout_margin="20dp">
             <ImageView
                 android:id="@+id/icPrivacy"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/privacy_policy"/>
             <TextView
                 android:id="@+id/txtPrivacy"
@@ -198,12 +216,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
             <ImageView
                 android:id="@+id/icTerms"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/terms"/>
             <TextView
                 android:id="@+id/txtTerms"
@@ -223,16 +241,19 @@
                 android:layout_alignParentEnd="true"
                 />
         </RelativeLayout>
+
         <RelativeLayout
+            android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginTop="13dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
             <ImageView
                 android:id="@+id/icLogout"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/logout"/>
 
             <TextView
