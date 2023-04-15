@@ -1,105 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".Register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:gravity="center">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        android:fontFamily="@font/poppinssemibold"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_gravity="left"
+        />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="519dp"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="left">
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
-            android:gravity="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            android:text="Your"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account!"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="25sp"
+            android:textColor="@color/blue"
+            />
+    </LinearLayout>
 
-        <EditText
-            android:id="@+id/editTextUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="20dp"
-            android:hint="Username"
-            android:inputType="text" />
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="330dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:background="@drawable/rounded"
+        android:backgroundTint="#F8F8FA"
+        android:hint="Username"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="12sp"
+        android:drawableLeft="@drawable/ic_user"
+        android:paddingStart="20dp"
+        android:drawablePadding="18dp"
+        />
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="330dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/rounded"
+        android:backgroundTint="#F8F8FA"
+        android:hint="Email"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="12sp"
+        android:drawableLeft="@drawable/ic_user"
+        android:paddingStart="20dp"
+        android:drawablePadding="18dp"
+        />
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif"
-            android:hint="Password"
-            android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="330dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:background="@drawable/rounded"
+        android:backgroundTint="#F8F8FA"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="12sp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/ic_lock"
+        android:paddingStart="20dp"
+        android:drawablePadding="18dp"
+        />
 
         <RadioGroup
             android:id="@+id/radioGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            >
 
             <RadioButton
                 android:id="@+id/radioButtonMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Male" />
+                android:text="Laki-laki"
+                android:buttonTint="@color/blue"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"/>
 
 
             <RadioButton
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Female" />
-
+                android:text="Perempuan"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"
+                android:buttonTint="@color/blue"/>
         </RadioGroup>
 
-        <Button
-            android:id="@+id/buttonRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="90dp"
-            android:text="Register" />
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:text="Register"
+        android:background="@drawable/rounded_25"
+        app:backgroundTint="@color/blue"
+        android:fontFamily="@font/poppinssemibold"
+        android:textSize="16sp"
+        android:layout_marginTop="36dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center">
 
         <TextView
-            android:id="@+id/textViewLogin"
-            android:layout_width="match_parent"
+            android:id="@+id/txtLogin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:text="Already Registered?\nLogin Here"
-            android:textAlignment="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+            android:gravity="center"
+            android:text="Sudah memiliki akun?"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="13sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/textViewLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:text="Login"
+            android:fontFamily="@font/poppinsmedium"
+            android:textSize="13sp"
+            android:textColor="@color/blue"/>
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
