@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+//import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -29,14 +29,13 @@ import java.util.Map;
 public class Register extends AppCompatActivity {
     EditText editTextUsername, editTextEmail, editTextPassword;
     RadioGroup radioGroupGender;
-    ProgressBar progressBar;
+    //    ProgressBar progressBar;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        progressBar = findViewById(R.id.progressBar);
+//        progressBar = findViewById(R.id.progressBar);
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
@@ -103,7 +102,7 @@ public class Register extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressBar.setVisibility(View.GONE);
+//                        progressBar.setVisibility(View.GONE);
 
                         try {
                             JSONObject obj = new JSONObject(response);

@@ -51,7 +51,7 @@ public class AdapterRumahSewa extends RecyclerView.Adapter<AdapterRumahSewa.View
 
             namaRumah = itemView.findViewById(R.id.txtRumah);
             statusRumah = itemView.findViewById(R.id.txtStatus);
-            alamatRumah = itemView.findViewById(R.id.txtAlamat);
+            alamatRumah = itemView.findViewById(R.id.txtHarga);
             imgRumah = itemView.findViewById(R.id.imgHome);
         }
     }

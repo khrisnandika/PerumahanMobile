@@ -74,8 +74,7 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Login.class);
-                startActivity(intent);
+                getActivity().onBackPressed();
             }
         });
 
@@ -85,5 +84,12 @@ public class ProfileFragment extends Fragment {
         if(view.equals(logout)){
             SharedPrefManager.getInstance(getActivity().getApplicationContext()).logout();
         }
+    }
+    void signOut() {
+        Intent intent = new Intent(getActivity(), Login.class);
+        intent.putExtra("finish", true);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+        startActivity(intent);
+        getActivity().finish();
     }
 }

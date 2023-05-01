@@ -2,7 +2,6 @@ package com.example.perumahan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -36,7 +35,7 @@ public class Login extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
         }
 
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressbar);
         etName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etUserPassword);
 

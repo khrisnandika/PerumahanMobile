@@ -21,8 +21,8 @@ public class KataSandi extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(KataSandi.this, MainActivity.class);
-                startActivity(intent);
+                finish();
+                onBackPressed();
             }
         });
     }

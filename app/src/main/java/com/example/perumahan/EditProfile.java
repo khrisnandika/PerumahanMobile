@@ -21,8 +21,8 @@ public class EditProfile extends AppCompatActivity {
         backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditProfile.this, MainActivity.class);
-                startActivity(intent);
+                finish();
+                onBackPressed();
             }
         });
     }

@@ -24,8 +24,8 @@ public class Informasi extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Informasi.this, MainActivity.class);
-                startActivity(intent);
+                finish();
+                onBackPressed();
             }
         });
     }
