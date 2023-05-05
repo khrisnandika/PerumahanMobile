@@ -1,4 +1,4 @@
-package com.example.perumahan;
+package com.example.perumahan.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.perumahan.Model.ModelRumahSewa;
+import com.example.perumahan.R;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,11 @@
-package com.example.perumahan;
+package com.example.perumahan.Config;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
+import com.example.perumahan.Login;
+import com.example.perumahan.Model.User;
+
 public class SharedPrefManager {
     private static final String SHARED_PREF_NAME = "volleyregisterlogin";
     private static final String KEY_USERNAME = "keyusername";

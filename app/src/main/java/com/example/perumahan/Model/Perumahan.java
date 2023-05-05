@@ -1,4 +1,4 @@
-package com.example.perumahan;
+package com.example.perumahan.Model;
 
 import java.io.Serializable;
 

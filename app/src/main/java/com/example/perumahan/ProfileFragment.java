@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.RelativeLayout;
 
+import com.example.perumahan.Config.SharedPrefManager;
+import com.example.perumahan.Model.User;
+
 public class ProfileFragment extends Fragment {
 
     TextView logout,userName,email;

@@ -14,6 +14,9 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
+import com.example.perumahan.Config.SharedPrefManager;
+import com.example.perumahan.Model.User;
+
 
 public class HomeFragment extends Fragment {
     TextView userName;
