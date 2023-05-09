@@ -43,6 +43,7 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
         holder.txtRumah.setText(listDataDisewakan.get(position).getTipeRumah());
         holder.txtStatus.setText(listDataDisewakan.get(position).getStatusRumah());
         holder.txtAlamat.setText(listDataDisewakan.get(position).getAlamatRumah());
+        
 
 
 
@@ -65,6 +66,8 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
             txtRumah = itemView.findViewById(R.id.txtRumah);
             txtStatus = itemView.findViewById(R.id.txtStatus);
             txtAlamat = itemView.findViewById(R.id.txtAlamat);
+
         }
     }
+
 }

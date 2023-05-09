@@ -1,10 +1,19 @@
 package com.example.perumahan;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -14,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,15 +33,26 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.perumahan.Config.URLs;
 import com.example.perumahan.Model.Perumahan;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class UploadFragment extends Fragment {
+    private static final String url="http://10.0.2.2/api/simpan.php";
+    ImageView imageview3,imageview2,imageview1;
 
     private String refreshFlag="0";
     private String action_flag="add";
@@ -39,6 +60,7 @@ public class UploadFragment extends Fragment {
     private ProgressDialog pDialog;
     private Perumahan perumahan;
     private Button simpan;
+    ActivityResultLauncher<Intent> activityResultLauncher;
 
 
 
@@ -48,12 +70,61 @@ public class UploadFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
 
+        imageview1=(ImageView)view.findViewById(R.id.imageview1);
+        imageview2=(ImageView)view.findViewById(R.id.imageview2);
+        imageview3=(ImageView)view.findViewById(R.id.imageview3);
         tipeRumah = view.findViewById(R.id.fieldTipe);
         harga = view.findViewById(R.id.fieldHarga);
         luasBangunan = view.findViewById(R.id.fieldLuasbangunan);
         luasTanah = view.findViewById(R.id.fieldLuastanah);
         deskripsi = view.findViewById(R.id.fieldDeskripsi);
         simpan = view.findViewById(R.id.btnSimpan);
+
+        activityResultLauncher =registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result, Intent data) {
+                if (result.getResultCode() == 1 && result.getResultCode()==RESULT_OK) {
+
+                    Uri filepath=data.getData();
+//                    try {
+//                        InputStream_
+//                    }catch (Exception ex)
+//                    {
+//
+//                    }
+                }
+            }
+        });
+
+
+
+        imageview1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dexter.withActivity(getActivity())
+                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                        .withListener(new PermissionListener() {
+                            @Override
+                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+
+                                Intent intent=new Intent(Intent.ACTION_PICK);
+                                intent.setType("image/*");
+                                startActivityForResult(Intent.createChooser(intent,"Cari Gambar"),1);
+
+                            }
+
+                            @Override
+                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                            }
+
+                            @Override
+                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                            permissionToken.continuePermissionRequest();
+                            }
+                        }).check();
+            }
+        });
 
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +168,7 @@ public class UploadFragment extends Fragment {
         Intent data = new Intent();
         data.putExtra("refreshflag", refreshFlag);
         data.putExtra("perumahan", perumahan);
-        getActivity().setResult(Activity.RESULT_OK, data);
+        getActivity().setResult(RESULT_OK, data);
         super.getActivity().finish();
         startActivity(new Intent(getActivity(), MainActivity.class));
     }
@@ -164,7 +235,9 @@ public class UploadFragment extends Fragment {
 
     }
 
-//    private void showDialog() {
+
+
+    //    private void showDialog() {
 //        if (!pDialog.isShowing())
 //            pDialog.show();
 //    }

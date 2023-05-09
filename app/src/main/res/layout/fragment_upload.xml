@@ -67,30 +67,31 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="match_parent"
                 android:layout_marginTop="15dp">
 
                 <ImageView
+                    android:id="@+id/imageview1"
                     android:layout_width="63dp"
                     android:layout_height="63dp"
                     android:background="#D9D9D9"
-                    android:src="@drawable/ic_add"
-                    />
+                    android:src="@drawable/ic_add" />
+
                 <ImageView
+                    android:id="@+id/imageview2"
                     android:layout_width="63dp"
                     android:layout_height="63dp"
-                    android:background="#D9D9D9"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/ic_add"
-                    />
+                    android:background="#D9D9D9"
+                    android:src="@drawable/ic_add" />
+
                 <ImageView
+                    android:id="@+id/imageview3"
                     android:layout_width="63dp"
                     android:layout_height="63dp"
-                    android:background="#D9D9D9"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/ic_add"
-                    />
+                    android:background="#D9D9D9"
+                    android:src="@drawable/ic_add" />
             </LinearLayout>
 
             <LinearLayout
@@ -333,7 +334,7 @@
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="wrap_content "
                     android:layout_height="wrap_content"
                     android:text="Deskripsi"
                     android:fontFamily="@font/poppinssemibold"
