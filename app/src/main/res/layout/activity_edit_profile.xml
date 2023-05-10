@@ -90,15 +90,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nama Lengkap"
+                    android:text="Nama"
                     android:textSize="10sp"
                     android:textColor="@color/fontColor"
                     android:fontFamily="@font/poppinsmedium"
                     android:layout_marginTop="13dp"/>
                 <EditText
+                    android:id="@+id/etNama"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:hint="nama lengkap"
+                    android:hint="nama"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Pengguna"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:id="@+id/etNamaPengguna"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="nama pengguna"
                     android:textSize="13sp"
                     android:fontFamily="@font/poppinsregular"/>
                 <TextView
@@ -110,9 +126,25 @@
                     android:fontFamily="@font/poppinsmedium"
                     android:layout_marginTop="13dp"/>
                 <EditText
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="email"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppinsregular"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kelamin"
+                    android:textSize="10sp"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:layout_marginTop="13dp"/>
+                <EditText
+                    android:id="@+id/etJenisKelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="jenis kelamin"
                     android:textSize="13sp"
                     android:fontFamily="@font/poppinsregular"/>
                 <TextView
@@ -132,6 +164,7 @@
                     android:fontFamily="@font/poppinsmedium"
                     android:layout_marginTop="13dp"/>
                 <EditText
+                    android:id="@+id/etKodePos"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="kode Pos"
@@ -146,6 +179,7 @@
                     android:fontFamily="@font/poppinsmedium"
                     android:layout_marginTop="13dp"/>
                 <EditText
+                    android:id="@+id/etRt"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="rt"
@@ -160,6 +194,7 @@
                     android:fontFamily="@font/poppinsmedium"
                     android:layout_marginTop="13dp"/>
                 <EditText
+                    android:id="@+id/etRw"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="rw"
@@ -174,12 +209,14 @@
                     android:fontFamily="@font/poppinsmedium"
                     android:layout_marginTop="13dp"/>
                 <EditText
+                    android:id="@+id/etDetailAlamat"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="detail alamat"
                     android:textSize="13sp"
                     android:fontFamily="@font/poppinsregular"/>
                 <Button
+                    android:id="@+id/btnSimpan"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="30dp"
