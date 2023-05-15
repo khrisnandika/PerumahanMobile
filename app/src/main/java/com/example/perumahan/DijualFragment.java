@@ -67,7 +67,7 @@ public class DijualFragment extends Fragment {
                     for (int i = 0; i <jsonArray.length(); i++) {
                         modelDisewakan = new ModelDisewakan();
                         JSONObject data = jsonArray.getJSONObject(i);
-                        modelDisewakan.setGambarRumah(data.getString("foto_rumah"));
+                        modelDisewakan.setGambarRumah(data.getString("foto_rumah1"));
                         modelDisewakan.setTipeRumah(data.getString("tipe_rumah"));
                         modelDisewakan.setAlamatRumah(data.getString("alamat_rumah"));
                         modelDisewakan.setStatusRumah(data.getString("status"));
