@@ -7,220 +7,344 @@
     tools:context=".DetailDashboard">
 
 
+    <ImageSwitcher
+        android:id="@+id/action_image"
+        android:inAnimation="@android:anim/slide_in_left"
+        android:outAnimation="@android:anim/slide_out_right"
+        android:layout_width="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_30"
+        />
+
     <ImageButton
         android:id="@+id/belakang"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="125dp"
-        android:layout_toLeftOf="@+id/action_image"
+        android:layout_alignParentStart="true"
         android:background="@android:color/transparent"
         android:contentDescription="@string/material_motion_easing_standard"
         android:src="@drawable/mundur" />
-
-    <ImageSwitcher
-        android:id="@+id/action_image"
-        android:inAnimation="@android:anim/slide_in_left"
-        android:outAnimation="@android:anim/slide_out_right"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-android:layout_centerHorizontal="true"
-
-        />
 
     <ImageButton
         android:id="@+id/maju"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginTop="125dp"
-        android:layout_toRightOf="@+id/action_image"
+        android:layout_alignParentEnd="true"
         android:background="@android:color/transparent"
         android:contentDescription="@string/material_motion_easing_standard"
         android:src="@drawable/maju" />
 
-        <Button
-            android:id="@+id/ringkasan"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            app:backgroundTint="@color/suram"
-            android:shadowColor="@color/black"
-            android:layout_marginHorizontal="35dp"
-            android:text="Ringkasan"
-            android:textColor="@color/black"
-            android:background="@drawable/rounded_btn"
-            android:textStyle="bold"
-            android:layout_below="@+id/action_image"/>
-        <Button
-            android:id="@+id/tinjauan"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            app:backgroundTint="@color/suram"
-            android:shadowColor="@color/black"
-            android:text="Tinjauan"
-            android:textColor="@color/black"
-            android:background="@drawable/rounded_btn"
-            android:textStyle="bold"
-            android:layout_toRightOf="@+id/ringkasan"
-            android:layout_below="@+id/action_image"/>
+    <RelativeLayout
+        android:id="@+id/layoutIcon"
+        android:layout_below="@id/action_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp">
 
-   <LinearLayout
-       android:id="@+id/ukuranlayout"
-       android:layout_marginStart="10dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_below="@+id/ringkasan"
-       android:orientation="horizontal"
-       android:gravity="center_horizontal"
-       android:layout_marginTop="20dp">
-       <ImageView
+        <ImageView
+            android:id="@+id/ivUkuran"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/ukuran"
+            android:layout_marginTop="22dp"/>
 
-           android:id="@+id/ukuranimage"
-           android:layout_width="wrap_content"
-           android:layout_height="30dp"
-           android:src="@drawable/ukuran"
-           />
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           android:layout_marginStart="5dp"
-           >
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Ukuran"
-           android:textSize="12sp"
-           android:textStyle="bold"
-           />
-           <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="9x4"
-           android:textSize="10sp"
-           />
-       </LinearLayout>
-       <ImageView
-           android:layout_marginLeft="40dp"
-           android:id="@+id/uangimage"
-           android:layout_width="wrap_content"
-           android:layout_height="30dp"
-           android:src="@drawable/uangicon"
-           />
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           android:layout_marginStart="5dp"
-           >
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Ukuran"
-               android:textSize="12sp"
-               android:textStyle="bold"
-               />
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="9x4"
-               android:textSize="10sp"
-               />
-       </LinearLayout>
-       <ImageView
-           android:layout_marginLeft="40dp"
-           android:layout_width="wrap_content"
-           android:layout_height="30dp"
-           android:src="@drawable/angkaicon"
-           />
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           android:layout_marginStart="5dp"
-           >
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Ukuran"
-               android:textSize="12sp"
-               android:textStyle="bold"
-               />
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="9x4"
-               android:textSize="10sp"
-               />
-       </LinearLayout>
-   </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layoutUkuran"
+            android:layout_toRightOf="@+id/ivUkuran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:id="@+id/tvUkuran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ukuran"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/ukuran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"
+                android:text="3x4"
+                android:textSize="8sp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivGarasi"
+            android:layout_toRightOf="@+id/layoutUkuran"
+            android:layout_marginStart="40dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/garasi"
+            android:layout_marginTop="22dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutGarasi"
+            android:layout_toRightOf="@+id/ivGarasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:id="@+id/tvGarasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Garasi"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/garasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"
+                android:text="1"
+                android:textSize="8sp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivLuasBangunan"
+            android:layout_toRightOf="@+id/layoutGarasi"
+            android:layout_marginStart="40dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/luasbangunan"
+            android:layout_marginTop="22dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutLuasBangunan"
+            android:layout_toRightOf="@+id/ivLuasBangunan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:id="@+id/tvLuasBangunan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luas Bangunan"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/luasBangunan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"
+                android:text="9m2"
+                android:textSize="8sp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutIcon2"
+        android:layout_below="@id/layoutIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp">
+
+        <ImageView
+            android:id="@+id/ivLuasTanah"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/luastanah"
+            android:layout_marginTop="22dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutLuasTanah"
+            android:layout_toRightOf="@+id/ivLuasTanah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:id="@+id/tvLuasTanah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luas Tanah"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/luasTanah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"
+                android:text="3x4"
+                android:textSize="8sp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivKamar"
+            android:layout_toRightOf="@+id/layoutLuasTanah"
+            android:layout_marginStart="17dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/bedroom"
+            android:layout_marginTop="22dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutKamar"
+            android:layout_toRightOf="@+id/ivKamar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:id="@+id/tvKamar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kamar"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/kamar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"
+                android:text="1"
+                android:textSize="8sp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivKamarMandi"
+            android:layout_toRightOf="@+id/layoutKamar"
+            android:layout_marginStart="40dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/bathroom"
+            android:layout_marginTop="22dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutKamarMandi"
+            android:layout_toRightOf="@+id/ivKamarMandi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:id="@+id/tvKamarMandi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kamar Mandi"
+                android:fontFamily="@font/poppinssemibold"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/kamarMandi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsregular"
+                android:textColor="@color/black"
+                android:text="1"
+                android:textSize="8sp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:id="@+id/textlayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ukuranlayout"
-        android:orientation="vertical">
-    <TextView
+        android:layout_below="@+id/layoutIcon2"
+        android:orientation="vertical"
         android:layout_marginTop="33dp"
-        android:id="@+id/judultext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lorem Ipsum"
-        android:textStyle="bold"
-        android:layout_marginLeft="38dp"
-        />
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp">
+
         <TextView
-        android:id="@+id/isitext"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the."
-        android:textStyle="bold"
-        android:layout_marginLeft="38dp"
-        />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/textlayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textlayout1"
-        android:orientation="vertical">
-    <TextView
-        android:layout_marginTop="16dp"
-        android:id="@+id/judultext2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lorem Ipsum"
-        android:textStyle="bold"
-        android:layout_marginLeft="38dp"
-        />
-        <TextView
-        android:id="@+id/isitext2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the."
-        android:textStyle="bold"
-        android:layout_marginLeft="38dp"
-        />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_below="@id/textlayout2">
-        <Button
-            android:layout_width="240dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_btn"
-            app:backgroundTint="#50C2C9"
-            android:text="Beli Sekarang"/>
-        <Button
-            android:layout_marginLeft="16dp"
-            android:layout_width="60dp"
-            android:layout_height="50dp"
-            android:background="@drawable/rounded_btn"
-            app:backgroundTint="#29A71A"
-            android:drawableLeft="@drawable/waicon"
-            android:hint="wa"
+            android:id="@+id/judultext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi"
+            android:fontFamily="@font/poppinsbold"
+            android:textColor="@color/black"
             />
+        <TextView
+            android:id="@+id/isitext"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the."
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            />
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="40dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="17sp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp. 100.000.000"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="13sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnWhatsapp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:text="Hubungi Sekarang"
+            android:fontFamily="@font/poppinssemibold"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:background="@drawable/rounded_btn"
+            android:drawableRight="@drawable/icon_whatsapp"
+            app:backgroundTint="#29A71A"
+            />
+    </RelativeLayout>
 </RelativeLayout>

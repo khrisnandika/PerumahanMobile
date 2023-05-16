@@ -2,7 +2,16 @@ package com.example.perumahan.Model;
 
 public class ModelDisewakan {
 
+    private int id;
     private String gambarRumah, tipeRumah, statusRumah, alamatRumah;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getGambarRumah() {
         return gambarRumah;

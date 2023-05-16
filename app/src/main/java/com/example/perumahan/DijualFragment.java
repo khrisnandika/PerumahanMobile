@@ -1,5 +1,6 @@
 package com.example.perumahan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DijualFragment extends Fragment {
+public class DijualFragment extends Fragment implements AdapterDisewakan.OnItemClickListener{
 
     private String url = "http://10.0.2.2:80/api/tampil_data.php";
     RecyclerView recyclerView;
@@ -38,6 +39,10 @@ public class DijualFragment extends Fragment {
     List<ModelDisewakan> listDataDisewakan;
     ModelDisewakan modelDisewakan;
 
+    public static final String EXTRA_FOTO = "foto_rumah1";
+    public static final String EXTRA_TIPE = "tipe_rumah";
+    public static final String EXTRA_ALAMAT = "alamat_rumah";
+    public static final String EXTRA_STATUS = "status";
 
 
     @Override
@@ -67,11 +72,12 @@ public class DijualFragment extends Fragment {
                     for (int i = 0; i <jsonArray.length(); i++) {
                         modelDisewakan = new ModelDisewakan();
                         JSONObject data = jsonArray.getJSONObject(i);
+                        modelDisewakan.setId(data.getInt("id"));
                         modelDisewakan.setGambarRumah(data.getString("foto_rumah1"));
                         modelDisewakan.setTipeRumah(data.getString("tipe_rumah"));
                         modelDisewakan.setAlamatRumah(data.getString("alamat_rumah"));
                         modelDisewakan.setStatusRumah(data.getString("status"));
-//                        dataModel.setGambar(data.getString("img"));
+
                         listDataDisewakan.add(modelDisewakan);
                     }
 
@@ -81,6 +87,7 @@ public class DijualFragment extends Fragment {
                     adapterDisewakan = new AdapterDisewakan(getActivity(), listDataDisewakan);
                     recyclerView.setAdapter(adapterDisewakan);
                     adapterDisewakan.notifyDataSetChanged();
+                    adapterDisewakan.setOnItemClickListener(DijualFragment.this);
 
                 } catch (JSONException e) {
                     Log.e("Volley", e.toString());
@@ -95,6 +102,20 @@ public class DijualFragment extends Fragment {
         }
         );
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(getActivity(), DetailDashboard.class);
+        ModelDisewakan clickedItem = listDataDisewakan.get(position);
+
+        intent.putExtra(EXTRA_FOTO, clickedItem.getGambarRumah());
+        intent.putExtra(EXTRA_TIPE, clickedItem.getTipeRumah());
+        intent.putExtra(EXTRA_ALAMAT, clickedItem.getTipeRumah());
+        intent.putExtra(EXTRA_STATUS, clickedItem.getStatusRumah());
+
+        startActivity(intent);
+
     }
 //        private void getData(){
 //        modelRumahSewa = new ArrayList<>();
