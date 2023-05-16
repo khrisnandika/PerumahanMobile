@@ -78,22 +78,60 @@
         android:drawablePadding="18dp"
         />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="330dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:background="@drawable/rounded"
-        android:backgroundTint="#F8F8FA"
-        android:fontFamily="@font/poppinsregular"
-        android:textSize="12sp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:drawableLeft="@drawable/ic_lock"
-        android:paddingStart="20dp"
-        android:drawablePadding="18dp"
-        />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="330dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:background="@drawable/rounded"
+            android:backgroundTint="#F8F8FA"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="12sp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/ic_lock"
+            android:paddingStart="20dp"
+            android:drawablePadding="18dp"
+            />
+        <ImageView
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="300dp"
+            android:id="@+id/imageViewShowPasswordRegis1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_open"
+            android:onClick="togglePasswordVisibilityRegis1"/>
+        <EditText
+            android:id="@+id/editTextPasswordConfirm"
+            android:layout_width="330dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:background="@drawable/rounded"
+            android:backgroundTint="#F8F8FA"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="12sp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/ic_lock"
+            android:paddingStart="20dp"
+            android:drawablePadding="18dp"
+            android:layout_below="@id/editTextPassword"
+            />
+        <ImageView
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="300dp"
+            android:id="@+id/imageViewShowPasswordRegis2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_open"
+            android:layout_below="@+id/editTextPassword"
+            android:onClick="togglePasswordVisibilityRegis2"/>
+    </RelativeLayout>
 
         <RadioGroup
             android:id="@+id/radioGender"

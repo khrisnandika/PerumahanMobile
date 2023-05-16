@@ -53,7 +53,6 @@
                 />
 
         </LinearLayout>
-
         <EditText
             android:id="@+id/etUserName"
             android:layout_width="330dp"
@@ -67,26 +66,43 @@
             android:fontFamily="@font/poppinsregular"
             android:textSize="12sp"
             android:drawableLeft="@drawable/ic_user"
-            android:paddingStart="20dp"
-            android:drawablePadding="18dp"
-            />
 
-        <EditText
-            android:id="@+id/etUserPassword"
-            android:layout_width="330dp"
-            android:layout_height="57dp"
-            android:layout_marginTop="15dp"
-            android:ems="10"
-            android:background="@drawable/rounded"
-            android:backgroundTint="#F8F8FA"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="12sp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:drawableLeft="@drawable/ic_lock"
             android:paddingStart="20dp"
             android:drawablePadding="18dp"
+
             />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/etUserPassword"
+                android:layout_width="330dp"
+                android:layout_height="57dp"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:background="@drawable/rounded"
+                android:backgroundTint="#F8F8FA"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="12sp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_lock"
+                android:paddingStart="20dp"
+                android:drawablePadding="18dp"
+                />
+
+            <ImageView
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="300dp"
+                android:id="@+id/imageViewShowPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_open"
+                android:onClick="togglePasswordVisibility"/>
+        </RelativeLayout>
+
+
+
 
         <Button
             android:id="@+id/btnLogin"

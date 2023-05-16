@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 //import android.widget.ProgressBar;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -26,12 +28,14 @@ import com.example.perumahan.Model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity {
-    EditText editTextUsername, editTextEmail, editTextPassword;
+    EditText editTextUsername, editTextEmail, editTextPassword,getEditTextPasswordConfirm;
+    ImageView imageViewShowPasswordRegis2,imageViewShowPasswordRegis1;
     RadioGroup radioGroupGender;
     //    ProgressBar progressBar;
     @SuppressLint("MissingInflatedId")
@@ -50,14 +54,25 @@ public class Register extends AppCompatActivity {
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
+        getEditTextPasswordConfirm = findViewById(R.id.editTextPasswordConfirm);
         radioGroupGender = findViewById(R.id.radioGender);
+        imageViewShowPasswordRegis2 = findViewById(R.id.imageViewShowPasswordRegis2);
+        imageViewShowPasswordRegis1 = findViewById(R.id.imageViewShowPasswordRegis1);
 
 
         findViewById(R.id.buttonRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String password = editTextPassword.getText().toString();
+                String confirmPassword = getEditTextPasswordConfirm.getText().toString();
+                if (password.equals(confirmPassword)) {
+                    registerUser();
+                } else {
 
-                registerUser();
+                    Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
@@ -152,5 +167,29 @@ public class Register extends AppCompatActivity {
         };
 
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+    }
+    public void togglePasswordVisibilityRegis1(View view) {
+        int inputType = editTextPassword.getInputType();
+        if (inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            imageViewShowPasswordRegis1.setImageResource(R.drawable.ic_open);
+        } else {
+            editTextPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            imageViewShowPasswordRegis1.setImageResource(R.drawable.ic_close);
+        }
+
+        editTextPassword.setSelection(editTextPassword.getText().length());
+    }
+    public void togglePasswordVisibilityRegis2(View view) {
+        int inputType = getEditTextPasswordConfirm.getInputType();
+        if (inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            getEditTextPasswordConfirm.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            imageViewShowPasswordRegis2.setImageResource(R.drawable.ic_open);
+        } else {
+            getEditTextPasswordConfirm.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            imageViewShowPasswordRegis2.setImageResource(R.drawable.ic_close);
+        }
+
+        getEditTextPasswordConfirm.setSelection(getEditTextPasswordConfirm.getText().length());
     }
 }

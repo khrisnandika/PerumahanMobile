@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -33,6 +35,8 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
     EditText etName, etPassword;
+
+    ImageView imageViewShowPassword;
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class Login extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
         etName = findViewById(R.id.etUserName);
         etPassword = findViewById(R.id.etUserPassword);
+        imageViewShowPassword = findViewById(R.id.imageViewShowPassword);
 
 
 
@@ -188,5 +193,18 @@ public class Login extends AppCompatActivity {
 //            queue.add(stringRequest);
 //        }
 //    }
+public void togglePasswordVisibility(View view) {
+    int inputType = etPassword.getInputType();
+    if (inputType == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+        etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        imageViewShowPassword.setImageResource(R.drawable.ic_open);
+    } else {
+        etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        imageViewShowPassword.setImageResource(R.drawable.ic_close);
+    }
+
+    etPassword.setSelection(etPassword.getText().length());
+}
+
 }
 
