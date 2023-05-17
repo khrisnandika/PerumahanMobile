@@ -3,7 +3,8 @@ package com.example.perumahan.Model;
 public class ModelDisewakan {
 
     private int id;
-    private String gambarRumah, tipeRumah, statusRumah, alamatRumah;
+    private String gambarRumah, tipeRumah, statusRumah, alamatRumah, hargaRumah, ukuranRumah, totalKamar, totalKamarMandi, totalGarasi, judulRumah;
+
 
     public int getId() {
         return id;
@@ -43,5 +44,53 @@ public class ModelDisewakan {
 
     public void setAlamatRumah(String alamatRumah) {
         this.alamatRumah = alamatRumah;
+    }
+
+    public String getHargaRumah() {
+        return hargaRumah;
+    }
+
+    public void setHargaRumah(String hargaRumah) {
+        this.hargaRumah = hargaRumah;
+    }
+
+    public String getUkuranRumah() {
+        return ukuranRumah;
+    }
+
+    public void setUkuranRumah(String ukuranRumah) {
+        this.ukuranRumah = ukuranRumah;
+    }
+
+    public String getTotalKamar() {
+        return totalKamar;
+    }
+
+    public void setTotalKamar(String totalKamar) {
+        this.totalKamar = totalKamar;
+    }
+
+    public String getTotalKamarMandi() {
+        return totalKamarMandi;
+    }
+
+    public void setTotalKamarMandi(String totalKamarMandi) {
+        this.totalKamarMandi = totalKamarMandi;
+    }
+
+    public String getTotalGarasi() {
+        return totalGarasi;
+    }
+
+    public void setTotalGarasi(String totalGarasi) {
+        this.totalGarasi = totalGarasi;
+    }
+
+    public String getJudulRumah() {
+        return judulRumah;
+    }
+
+    public void setJudulRumah(String judulRumah) {
+        this.judulRumah = judulRumah;
     }
 }

@@ -28,7 +28,7 @@ import java.util.Map;
 public class EditProfile extends AppCompatActivity {
 
     ImageView backImg;
-    EditText etNama, etNamaPengguna, etEmail, etKodePos, etRt, etRw, etDetailAlamat, etJenisKelamin;
+    EditText etNamaPengguna, etEmail, etDetailAlamat, etJenisKelamin;
     Button btnSimpan;
 
     @Override
@@ -41,20 +41,13 @@ public class EditProfile extends AppCompatActivity {
 
 
         if(SharedPrefManager.getInstance(EditProfile.this).isLoggedIn()){
-            etNama = findViewById(R.id.etNama);
             etNamaPengguna = findViewById(R.id.etNamaPengguna);
             etEmail = findViewById(R.id.etEmail);
-            etKodePos = findViewById(R.id.etKodePos);
-            etRt = findViewById(R.id.etRt);
-            etRw = findViewById(R.id.etRw);
             etDetailAlamat = findViewById(R.id.etDetailAlamat);
             etJenisKelamin = findViewById(R.id.etJenisKelamin);
             User user = SharedPrefManager.getInstance(EditProfile.this).getUser();
             etNamaPengguna.setText(user.getName());
             etEmail.setText(user.getEmail());
-            etKodePos.setText(user.getKodePos());
-            etRt.setText(user.getRt());
-            etRw.setText(user.getRw());
             etDetailAlamat.setText(user.getDetailAlamat());
             etJenisKelamin.setText(user.getGender());
         }
@@ -74,10 +67,11 @@ public class EditProfile extends AppCompatActivity {
         });
 
     }
-    private void editData(){
+    private void editData() {
         final String username = etNamaPengguna.getText().toString().trim();
         final String email = etEmail.getText().toString().trim();
         final String gender = etJenisKelamin.getText().toString().trim();
+        final String alamat = etDetailAlamat.getText().toString().trim();
 
         RequestQueue requestQueue = Volley.newRequestQueue(EditProfile.this);
         String url = URLs.UPDATE_URL;
@@ -92,18 +86,18 @@ public class EditProfile extends AppCompatActivity {
                 Log.e("Volley", error.toString());
             }
         }
-        ){
+        ) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                    params.put("username", username);
-                    params.put("email", email);
-                    params.put("gender", gender);
-                    return params;
+                params.put("username", username);
+                params.put("email", email);
+                params.put("gender", gender);
+                params.put("alamat", alamat);
+                return params;
             }
         };
-        RequestQueue queue = Volley.newRequestQueue(EditProfile.this);
-        queue.add(stringRequest);
+        requestQueue.add(stringRequest);
     }
 }

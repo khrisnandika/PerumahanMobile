@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="338dp"
-        android:layout_height="112dp"
+        android:layout_height="132dp"
         android:layout_marginBottom="21dp"
         android:background="@drawable/rounded_image"
         android:backgroundTint="@color/secondary">
@@ -13,67 +13,181 @@
         <ImageView
             android:id="@+id/imgHome"
             android:layout_width="119dp"
-            android:layout_height="101dp"
+            android:layout_height="123dp"
             android:layout_marginTop="6dp"
             android:layout_marginStart="6dp"
+            android:layout_marginBottom="6dp"
             android:background="@drawable/rounded_image"
             />
-        <TextView
-            android:id="@+id/txtRumah"
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imgHome"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="29dp"
-            android:text="Rumah Berseri"
-            android:textColor="@color/fontColor"
-            android:fontFamily="@font/poppinssemibold"
-            android:textSize="13sp"
-            />
-        <ImageView
-            android:id="@+id/icon1"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_below="@+id/txtRumah"
-            android:layout_toRightOf="@+id/imgHome"
-            android:layout_marginStart="17dp"
-            android:src="@drawable/icon_status"
-            android:layout_marginTop="3dp"
-            />
-        <ImageView
-            android:id="@+id/icon2"
-            android:layout_width="8.66dp"
-            android:layout_height="10dp"
-            android:layout_below="@+id/txtStatus"
-            android:layout_toRightOf="@+id/imgHome"
-            android:layout_marginStart="17dp"
-            android:src="@drawable/icon_location"
-            android:layout_marginTop="3dp"
-            />
-        <TextView
-            android:id="@+id/txtStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/icon1"
-            android:layout_below="@+id/txtRumah"
-            android:layout_marginStart="4dp"
-            android:text="Status : Tersedia"
-            android:textColor="@color/fontColor"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="10sp"
-            />
-        <TextView
-            android:id="@+id/txtAlamat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/icon2"
-            android:layout_below="@+id/txtStatus"
-            android:layout_marginStart="5dp"
-            android:text="Jalan Jendral Sudirman"
-            android:textColor="@color/fontColor"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="10sp"
-            />
+            android:layout_toRightOf="@id/imgHome"
+            android:layout_centerInParent="true"
+            >
+
+            <TextView
+                android:id="@+id/txtRumah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:text="Rumah Berseri"
+                android:textColor="@color/fontColor"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="13sp"
+                />
+            <ImageView
+                android:id="@+id/icon1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/txtRumah"
+                android:layout_marginStart="17dp"
+                android:src="@drawable/icon_status"
+                android:layout_marginTop="3dp"
+                />
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="8.66dp"
+                android:layout_height="10dp"
+                android:layout_below="@+id/txtStatus"
+                android:layout_marginStart="17dp"
+                android:src="@drawable/icon_location"
+                android:layout_marginTop="3dp"
+                />
+            <ImageView
+                android:id="@+id/icon7"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:layout_below="@+id/txtAlamat"
+                android:layout_marginStart="17dp"
+                android:src="@drawable/money"
+                android:layout_marginTop="3dp"
+                />
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon1"
+                android:layout_below="@+id/txtRumah"
+                android:layout_marginStart="4dp"
+                android:text="Status : Tersedia"
+                android:textColor="@color/fontColor"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="10sp"
+                />
+            <TextView
+                android:id="@+id/txtAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon2"
+                android:layout_below="@+id/txtStatus"
+                android:layout_marginStart="5dp"
+                android:text="Jalan Jendral Sudirman"
+                android:textColor="@color/fontColor"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="10sp"
+                />
+            <TextView
+                android:id="@+id/txtHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon7"
+                android:layout_below="@+id/txtAlamat"
+                android:layout_marginStart="5dp"
+                android:text="Rp. 100.000.000"
+                android:textColor="@color/fontColor"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="10sp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtHarga"
+                android:orientation="horizontal"
+                android:layout_marginStart="17dp">
+
+                <ImageView
+                    android:id="@+id/icon3"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_below="@+id/txtStatus"
+                    android:layout_toRightOf="@+id/imgHome"
+                    android:src="@drawable/ukuran"
+                    android:layout_marginTop="3dp"
+                    />
+                <TextView
+                    android:id="@+id/txtUkuran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="9x4"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="10sp"
+                    />
+                <ImageView
+                    android:id="@+id/icon4"
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:src="@drawable/bedroom"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    />
+                <TextView
+                    android:id="@+id/txtKamar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="3"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="10sp"
+                    />
+                <ImageView
+                    android:id="@+id/icon5"
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:src="@drawable/bathroom"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    />
+                <TextView
+                    android:id="@+id/txtKamarMandi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="2"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="10sp"
+                    />
+                <ImageView
+                    android:id="@+id/icon6"
+                    android:layout_width="11dp"
+                    android:layout_height="11dp"
+                    android:src="@drawable/garasi"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    />
+                <TextView
+                    android:id="@+id/txtGarasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="1"
+                    android:textColor="@color/fontColor"
+                    android:fontFamily="@font/poppinsregular"
+                    android:textSize="10sp"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
 
     </RelativeLayout>
 

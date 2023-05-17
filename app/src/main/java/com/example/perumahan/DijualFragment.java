@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DijualFragment extends Fragment implements AdapterDisewakan.OnItemClickListener{
+public class DijualFragment extends Fragment {
 
     private String url = "http://10.0.2.2:80/api/tampil_data.php";
     RecyclerView recyclerView;
@@ -39,10 +39,6 @@ public class DijualFragment extends Fragment implements AdapterDisewakan.OnItemC
     List<ModelDisewakan> listDataDisewakan;
     ModelDisewakan modelDisewakan;
 
-    public static final String EXTRA_FOTO = "foto_rumah1";
-    public static final String EXTRA_TIPE = "tipe_rumah";
-    public static final String EXTRA_ALAMAT = "alamat_rumah";
-    public static final String EXTRA_STATUS = "status";
 
 
     @Override
@@ -74,9 +70,14 @@ public class DijualFragment extends Fragment implements AdapterDisewakan.OnItemC
                         JSONObject data = jsonArray.getJSONObject(i);
                         modelDisewakan.setId(data.getInt("id"));
                         modelDisewakan.setGambarRumah(data.getString("foto_rumah1"));
-                        modelDisewakan.setTipeRumah(data.getString("tipe_rumah"));
+                        modelDisewakan.setJudulRumah(data.getString("judul"));
                         modelDisewakan.setAlamatRumah(data.getString("alamat_rumah"));
                         modelDisewakan.setStatusRumah(data.getString("status"));
+                        modelDisewakan.setHargaRumah(data.getString("harga_rumah"));
+                        modelDisewakan.setUkuranRumah(data.getString("tipe_rumah"));
+                        modelDisewakan.setTotalKamar(data.getString("total_kamar"));
+                        modelDisewakan.setTotalKamarMandi(data.getString("total_kamar_mandi"));
+                        modelDisewakan.setTotalGarasi(data.getString("total_garasi"));
 
                         listDataDisewakan.add(modelDisewakan);
                     }
@@ -87,7 +88,7 @@ public class DijualFragment extends Fragment implements AdapterDisewakan.OnItemC
                     adapterDisewakan = new AdapterDisewakan(getActivity(), listDataDisewakan);
                     recyclerView.setAdapter(adapterDisewakan);
                     adapterDisewakan.notifyDataSetChanged();
-                    adapterDisewakan.setOnItemClickListener(DijualFragment.this);
+//                    adapterDisewakan.setOnItemClickListener(DijualFragment.this);
 
                 } catch (JSONException e) {
                     Log.e("Volley", e.toString());
@@ -104,19 +105,6 @@ public class DijualFragment extends Fragment implements AdapterDisewakan.OnItemC
         requestQueue.add(stringRequest);
     }
 
-    @Override
-    public void onItemClick(int position) {
-        Intent intent = new Intent(getActivity(), DetailDashboard.class);
-        ModelDisewakan clickedItem = listDataDisewakan.get(position);
-
-        intent.putExtra(EXTRA_FOTO, clickedItem.getGambarRumah());
-        intent.putExtra(EXTRA_TIPE, clickedItem.getTipeRumah());
-        intent.putExtra(EXTRA_ALAMAT, clickedItem.getTipeRumah());
-        intent.putExtra(EXTRA_STATUS, clickedItem.getStatusRumah());
-
-        startActivity(intent);
-
-    }
 //        private void getData(){
 //        modelRumahSewa = new ArrayList<>();
 //        modelRumahSewa.add(new ModelRumahSewa("Rumah Berseri","Status : Tersedia","Jalan Jendral Sudirman", R.drawable.rumah1));

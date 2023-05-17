@@ -87,21 +87,7 @@
                     android:fontFamily="@font/poppinssemibold"
                     android:textSize="13sp"
                     android:textColor="@color/blue"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nama"
-                    android:textSize="10sp"
-                    android:textColor="@color/fontColor"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:layout_marginTop="13dp"/>
-                <EditText
-                    android:id="@+id/etNama"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="nama"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppinsregular"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,51 +141,6 @@
                     android:textSize="13sp"
                     android:textColor="@color/blue"
                     android:layout_marginTop="18dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kode Pos"
-                    android:textSize="10sp"
-                    android:textColor="@color/fontColor"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:layout_marginTop="13dp"/>
-                <EditText
-                    android:id="@+id/etKodePos"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="kode Pos"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppinsregular"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="RT"
-                    android:textSize="10sp"
-                    android:textColor="@color/fontColor"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:layout_marginTop="13dp"/>
-                <EditText
-                    android:id="@+id/etRt"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="rt"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppinsregular"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="RW"
-                    android:textSize="10sp"
-                    android:textColor="@color/fontColor"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:layout_marginTop="13dp"/>
-                <EditText
-                    android:id="@+id/etRw"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="rw"
-                    android:textSize="13sp"
-                    android:fontFamily="@font/poppinsregular"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

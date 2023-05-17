@@ -1,9 +1,5 @@
 package com.example.perumahan;
 
-import static com.example.perumahan.DijualFragment.EXTRA_ALAMAT;
-import static com.example.perumahan.DijualFragment.EXTRA_FOTO;
-import static com.example.perumahan.DijualFragment.EXTRA_STATUS;
-import static com.example.perumahan.DijualFragment.EXTRA_TIPE;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,12 +41,13 @@ import java.util.Map;
 public class DetailDashboard extends AppCompatActivity {
     ImageButton belakang,maju;
     ImageSwitcher action_image;
-    TextView tvTipe, tvAlamat, tvStatus;
+    TextView tvJudul, tvTipe, tvAlamat, tvStatus, tvGarasi, tvLuasBangunan, tvLuasTanah, tvKamar, tvKamarMandi, tvDeskripsi, tvHarga;
     int id;
 
 
     int index=0;
     int fongto[]={R.drawable.fotodash,R.drawable.bg_image};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +60,16 @@ public class DetailDashboard extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0);
 
+        tvJudul = findViewById(R.id.judul);
         tvTipe = findViewById(R.id.ukuran);
-        tvAlamat = findViewById(R.id.garasi);
-        tvStatus = findViewById(R.id.luasBangunan);
+        tvAlamat = findViewById(R.id.alamat);
+        tvGarasi = findViewById(R.id.garasi);
+        tvLuasBangunan = findViewById(R.id.luasBangunan);
+        tvLuasTanah = findViewById(R.id.luasTanah);
+        tvKamar = findViewById(R.id.kamar);
+        tvKamarMandi = findViewById(R.id.kamarMandi);
+        tvDeskripsi = findViewById(R.id.deskripsi);
+        tvHarga = findViewById(R.id.harga);
 
 
         tampilData();
@@ -124,8 +128,17 @@ public class DetailDashboard extends AppCompatActivity {
                     System.out.println(data);
 
 
-                    tvTipe.setText(data.getString("id"));
-                    tvStatus.setText(data.getString("status"));
+                    tvTipe.setText(data.getString("tipe_rumah"));
+                    tvGarasi.setText(data.getString("total_garasi"));
+                    tvLuasBangunan.setText(data.getString("luas_bangunan"));
+                    tvLuasTanah.setText(data.getString("luas_tanah"));
+                    tvKamar.setText(data.getString("total_kamar"));
+                    tvKamarMandi.setText(data.getString("total_kamar_mandi"));
+                    tvJudul.setText(data.getString("judul"));
+                    tvAlamat.setText(data.getString("alamat_rumah"));
+                    tvHarga.setText(data.getString("harga_rumah"));
+                    tvDeskripsi.setText(data.getString("deskripsi"));
+
 
 
                 } catch (JSONException e) {

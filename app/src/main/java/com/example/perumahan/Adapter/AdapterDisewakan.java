@@ -24,15 +24,6 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
     List<ModelDisewakan> listDataDisewakan;
     LayoutInflater layoutInflater;
     Context context;
-    private OnItemClickListener mListener;
-
-    public interface OnItemClickListener{
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener = listener;
-    }
 
     public AdapterDisewakan(Context context, List<ModelDisewakan> listDataDisewakan) {
         this.listDataDisewakan = listDataDisewakan;
@@ -52,9 +43,16 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Glide.with(context).load(listDataDisewakan.get(position).getGambarRumah()).into(holder.image);
-        holder.txtRumah.setText(listDataDisewakan.get(position).getTipeRumah());
+        holder.txtRumah.setText(listDataDisewakan.get(position).getJudulRumah());
         holder.txtStatus.setText(listDataDisewakan.get(position).getStatusRumah());
         holder.txtAlamat.setText(listDataDisewakan.get(position).getAlamatRumah());
+        holder.txtHarga.setText(listDataDisewakan.get(position).getHargaRumah());
+        holder.txtUkuran.setText(listDataDisewakan.get(position).getUkuranRumah());
+        holder.txtKamar.setText(listDataDisewakan.get(position).getTotalKamar());
+        holder.txtKamarMandi.setText(listDataDisewakan.get(position).getTotalKamarMandi());
+        holder.txtGarasi.setText(listDataDisewakan.get(position).getTotalGarasi());
+
+
         holder.modelDisewakan = listDataDisewakan.get(position);
 
 
@@ -71,7 +69,7 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
         ModelDisewakan modelDisewakan;
 
         ImageView image;
-        TextView txtRumah, txtStatus, txtAlamat;
+        TextView txtRumah, txtStatus, txtAlamat, txtHarga, txtUkuran, txtKamar, txtKamarMandi, txtGarasi;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -80,19 +78,13 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
             txtRumah = itemView.findViewById(R.id.txtRumah);
             txtStatus = itemView.findViewById(R.id.txtStatus);
             txtAlamat = itemView.findViewById(R.id.txtAlamat);
+            txtHarga = itemView.findViewById(R.id.txtHarga);
+            txtUkuran = itemView.findViewById(R.id.txtUkuran);
+            txtKamar = itemView.findViewById(R.id.txtKamar);
+            txtKamarMandi = itemView.findViewById(R.id.txtKamarMandi);
+            txtGarasi = itemView.findViewById(R.id.txtGarasi);
             itemView.setOnClickListener(this);
 
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if (mListener != null) {
-//                        int position = getBindingAdapterPosition();
-//                        if (position != RecyclerView.NO_POSITION) {
-//                            mListener.onItemClick(position);
-//                        }
-//                    }
-//                }
-//            });
         }
 
         @Override
