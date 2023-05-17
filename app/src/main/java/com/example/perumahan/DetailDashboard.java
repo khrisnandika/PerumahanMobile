@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
@@ -43,6 +45,7 @@ public class DetailDashboard extends AppCompatActivity {
     ImageSwitcher action_image;
     TextView tvJudul, tvTipe, tvAlamat, tvStatus, tvGarasi, tvLuasBangunan, tvLuasTanah, tvKamar, tvKamarMandi, tvDeskripsi, tvHarga;
     int id;
+    Button btnWhatsapp;
 
 
     int index=0;
@@ -56,6 +59,7 @@ public class DetailDashboard extends AppCompatActivity {
         belakang=findViewById(R.id.belakang);
         maju=findViewById(R.id.maju);
         action_image=findViewById(R.id.action_image);
+        btnWhatsapp = findViewById(R.id.btnWhatsapp);
 
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0);
@@ -108,6 +112,16 @@ public class DetailDashboard extends AppCompatActivity {
         });
 
         action_image.setImageResource(fongto[index]);
+
+        btnWhatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://wa.me/6282332388893?text=Halo+Admin,+Saya+ingin+bertanya+seputar+info+rumah+yang+sedang+dijual";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
 
     }
 
