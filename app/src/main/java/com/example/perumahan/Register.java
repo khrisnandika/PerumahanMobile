@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity {
                     registerUser();
                 } else {
 
-                    Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Kata Sandi Tidak Cocok", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -90,30 +90,36 @@ public class Register extends AppCompatActivity {
         final String username = editTextUsername.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
+        final String confirmPassword = getEditTextPasswordConfirm.getText().toString().trim();
 
         final String gender = ((RadioButton) findViewById(radioGroupGender.getCheckedRadioButtonId())).getText().toString();
 
         if (TextUtils.isEmpty(username)) {
-            editTextUsername.setError("Please enter username");
+            editTextUsername.setError("Harap Masukkan Nama Pengguna");
             editTextUsername.requestFocus();
             return;
         }
 
         if (TextUtils.isEmpty(email)) {
-            editTextEmail.setError("Please enter your email");
+            editTextEmail.setError("Harap Masukkan Email");
             editTextEmail.requestFocus();
             return;
         }
 
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Enter a valid email");
+            editTextEmail.setError("Harap Masukkan Email yang Akurat");
             editTextEmail.requestFocus();
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            editTextPassword.setError("Enter a password");
+            editTextPassword.setError("Harap Masukkan Kata Sandi");
             editTextPassword.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(confirmPassword)) {
+            getEditTextPasswordConfirm.setError("Harap Masukkan Konfirmasi Kata Sandi");
+            getEditTextPasswordConfirm.requestFocus();
             return;
         }
 
