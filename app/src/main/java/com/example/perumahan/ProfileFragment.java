@@ -1,6 +1,8 @@
 package com.example.perumahan;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -22,7 +24,7 @@ public class ProfileFragment extends Fragment {
 
     TextView logout,userName,email;
     Button editBtn;
-    RelativeLayout btnKataSandi, btnInformasi, btnLogout;
+    RelativeLayout btnKataSandi, btnInformasi, btnLogout, btnHapusAkun;
 
     private Context context;
 
@@ -57,6 +59,7 @@ public class ProfileFragment extends Fragment {
         btnKataSandi = view.findViewById(R.id.btnKataSandi);
         btnInformasi = view.findViewById(R.id.btnInformasiAplikasi);
         btnLogout = view.findViewById(R.id.btnLogout);
+        btnHapusAkun = view.findViewById(R.id.btnHapusAkun);
 
         btnKataSandi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +94,26 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        btnHapusAkun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final CharSequence[] pilihAksi= {"YA", "TIDAK"};
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                dialog.setItems(pilihAksi, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case 0:
+                                //jika dipilih ya
+
+                            case  1:
+                                //jika dipilih tidak
+                        }
+                    }
+                });
+            }
+        });
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,5 +134,9 @@ public class ProfileFragment extends Fragment {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
         startActivity(intent);
         getActivity().finish();
+    }
+
+    public void hapusData(){
+
     }
 }

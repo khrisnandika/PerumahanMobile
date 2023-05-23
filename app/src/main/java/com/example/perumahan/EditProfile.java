@@ -1,14 +1,20 @@
 package com.example.perumahan;
 
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -27,6 +33,8 @@ import java.util.Map;
 
 public class EditProfile extends AppCompatActivity {
 
+    private static final String SHARED_PREF_NAME = "volleyregisterlogin";
+    private static final String KEY_ID = "keyid";
     ImageView backImg;
     EditText etNamaPengguna, etEmail, etDetailAlamat, etJenisKelamin;
     Button btnSimpan;
@@ -67,6 +75,65 @@ public class EditProfile extends AppCompatActivity {
         });
 
     }
+    private void hapusData() {
+        int id = getLoggedInUserId();
+
+        final String username = etNamaPengguna.getText().toString().trim();
+        final String email = etEmail.getText().toString().trim();
+        final String gender = etJenisKelamin.getText().toString().trim();
+        final String alamat = etDetailAlamat.getText().toString().trim();
+
+        RequestQueue requestQueue = Volley.newRequestQueue(EditProfile.this);
+
+        if (id == -1) {
+            Toast.makeText(EditProfile.this, "ID akun tidak ditemukan", Toast.LENGTH_SHORT).show();
+            return;
+        }
+//        String url = URLs.UPDATE_URL;
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.HAPUS_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("Volley", response);
+                logout();
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                startActivity(new Intent(EditProfile.this, Login.class));
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley", error.toString());
+            }
+        }
+        ) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id", String.valueOf(id));
+                params.put("username", username);
+                params.put("email", email);
+                params.put("gender", gender);
+                params.put("alamat", alamat);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+    private int getLoggedInUserId() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_ID, -1); // Mengembalikan nilai default -1 jika tidak ada ID tersimpan
+    }
+    private void logout() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
     private void editData() {
         final String username = etNamaPengguna.getText().toString().trim();
         final String email = etEmail.getText().toString().trim();

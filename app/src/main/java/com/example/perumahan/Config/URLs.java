@@ -7,4 +7,5 @@ public class URLs {
     public static final String SIMPAN_URL = "http://10.0.2.2:80/api/upload.php";
     public static final String TAMPIL_URL = "http://10.0.2.2:80/api/read_data.php";
     public static final String UPDATE_URL = "http://10.0.2.2:80/api/ubah.php";
+    public static final String HAPUS_URL = "http://10.0.2.2:80/api/hapus.php";
 }

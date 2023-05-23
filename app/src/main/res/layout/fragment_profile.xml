@@ -187,6 +187,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/btnHapusAkun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp">
@@ -199,7 +200,7 @@
                 android:id="@+id/txtPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kebijakan Pribadi"
+                android:text="Hapus Akun"
                 android:layout_marginStart="15dp"
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="12sp"
