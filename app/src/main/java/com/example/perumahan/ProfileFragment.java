@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,7 @@ public class ProfileFragment extends Fragment {
 
     TextView logout,userName,email;
     Button editBtn;
-    RelativeLayout btnKataSandi, btnInformasi, btnLogout, btnHapusAkun;
+    RelativeLayout btnKataSandi, btnInformasi, btnLogout;
 
     private Context context;
 
@@ -39,7 +40,13 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
         logout = view.findViewById(R.id.txtLogout);
+        editBtn = view.findViewById(R.id.btnEdit);
+        btnKataSandi = view.findViewById(R.id.btnKataSandi);
+        btnInformasi = view.findViewById(R.id.btnInformasiAplikasi);
+        btnLogout = view.findViewById(R.id.btnLogout);
+
         if(SharedPrefManager.getInstance(getActivity()).isLoggedIn()){
             userName = view.findViewById(R.id.txtName);
             email = view.findViewById(R.id.txtEmail);
@@ -47,19 +54,13 @@ public class ProfileFragment extends Fragment {
             userName.setText(user.getName());
             email.setText(user.getEmail());
 
-            logout.setOnClickListener(this::onClick);
+//            btnLogout.setOnClickListener(this::onClick);
         }
-        else{
-            Intent intent = new Intent(getActivity(),Login.class);
-            startActivity(intent);
-            getActivity().finish();
-        }
-
-        editBtn = view.findViewById(R.id.btnEdit);
-        btnKataSandi = view.findViewById(R.id.btnKataSandi);
-        btnInformasi = view.findViewById(R.id.btnInformasiAplikasi);
-        btnLogout = view.findViewById(R.id.btnLogout);
-        btnHapusAkun = view.findViewById(R.id.btnHapusAkun);
+//        else{
+//            Intent intent = new Intent(getActivity(),Login.class);
+//            startActivity(intent);
+//            getActivity().finish();
+//        }
 
         btnKataSandi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,14 +73,7 @@ public class ProfileFragment extends Fragment {
         btnInformasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseHelper dbHelper = new DatabaseHelper(context);
-                boolean deleted = dbHelper.deleteAccount(1); // Menghapus akun dengan ID 1
-
-                if (deleted) {
-                    Toast.makeText(context, "Akun berhasil dihapus", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Gagal menghapus akun", Toast.LENGTH_SHORT).show();
-                }
+                startActivity(new Intent(getActivity(), Informasi.class));
             }
         });
 
@@ -94,49 +88,29 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        btnHapusAkun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final CharSequence[] pilihAksi= {"YA", "TIDAK"};
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                dialog.setItems(pilihAksi, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which){
-                            case 0:
-                                //jika dipilih ya
-
-                            case  1:
-                                //jika dipilih tidak
-                        }
-                    }
-                });
-            }
-        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                logout();
             }
         });
 
         return view;
     }
-    public void onClick(View view){
-        if(view.equals(logout)){
-            SharedPrefManager.getInstance(getActivity().getApplicationContext()).logout();
-        }
-    }
-    void signOut() {
+
+//    public void onClick(View view){
+//        if(view.equals(logout)){
+//            SharedPrefManager.getInstance(getActivity().getApplicationContext()).logout();
+//            getActivity().finish();
+//        }
+//    }
+    public void logout() {
+        SharedPrefManager.getInstance(getActivity()).logout();
         Intent intent = new Intent(getActivity(), Login.class);
-        intent.putExtra("finish", true);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         getActivity().finish();
     }
 
-    public void hapusData(){
-
-    }
 }

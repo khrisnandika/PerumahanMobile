@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,7 +39,7 @@ public class EditProfile extends AppCompatActivity {
     private static final String KEY_ID = "keyid";
     ImageView backImg;
     EditText etNamaPengguna, etEmail, etDetailAlamat, etJenisKelamin;
-    Button btnSimpan;
+    Button btnSimpan, btnHapusAkun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class EditProfile extends AppCompatActivity {
 
         backImg = findViewById(R.id.imgBack);
         btnSimpan = findViewById(R.id.btnSimpan);
+        btnHapusAkun = findViewById(R.id.btnHapusAkun);
 
 
         if(SharedPrefManager.getInstance(EditProfile.this).isLoggedIn()){
@@ -71,6 +74,32 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 editData();
+            }
+        });
+
+        btnHapusAkun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditProfile.this);
+                builder.setTitle("Konfirmasi");
+                builder.setMessage("Apakah anda yakin ingin menghapus akun?");
+
+                builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        hapusData();
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("TIDAK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        onBackPressed();
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -127,11 +156,15 @@ public class EditProfile extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_ID, -1); // Mengembalikan nilai default -1 jika tidak ada ID tersimpan
     }
-    private void logout() {
+    public void logout() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
+        Intent intent = new Intent(EditProfile.this, Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void editData() {
