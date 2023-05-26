@@ -23,11 +23,16 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.perumahan.Config.SharedPrefManager;
 import com.example.perumahan.Config.URLs;
+import com.example.perumahan.Config.VolleySingleton;
 import com.example.perumahan.Model.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -50,18 +55,12 @@ public class EditProfile extends AppCompatActivity {
         btnSimpan = findViewById(R.id.btnSimpan);
         btnHapusAkun = findViewById(R.id.btnHapusAkun);
 
+        etNamaPengguna = findViewById(R.id.etNamaPengguna);
+        etEmail = findViewById(R.id.etEmail);
+        etDetailAlamat = findViewById(R.id.etDetailAlamat);
+        etJenisKelamin = findViewById(R.id.etJenisKelamin);
 
-        if(SharedPrefManager.getInstance(EditProfile.this).isLoggedIn()){
-            etNamaPengguna = findViewById(R.id.etNamaPengguna);
-            etEmail = findViewById(R.id.etEmail);
-            etDetailAlamat = findViewById(R.id.etDetailAlamat);
-            etJenisKelamin = findViewById(R.id.etJenisKelamin);
-            User user = SharedPrefManager.getInstance(EditProfile.this).getUser();
-            etNamaPengguna.setText(user.getName());
-            etEmail.setText(user.getEmail());
-            etDetailAlamat.setText(user.getDetailAlamat());
-            etJenisKelamin.setText(user.getGender());
-        }
+        loadDataUser();
 
         backImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +72,7 @@ public class EditProfile extends AppCompatActivity {
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editData();
+                showDialogUpdateUser();
             }
         });
 
@@ -167,37 +166,120 @@ public class EditProfile extends AppCompatActivity {
         finish();
     }
 
-    private void editData() {
-        final String username = etNamaPengguna.getText().toString().trim();
-        final String email = etEmail.getText().toString().trim();
-        final String gender = etJenisKelamin.getText().toString().trim();
-        final String alamat = etDetailAlamat.getText().toString().trim();
+    private void loadDataUser() {
+        // Mendapatkan ID pengguna yang sedang login
+        int userId = getLoggedInUserId();
 
-        RequestQueue requestQueue = Volley.newRequestQueue(EditProfile.this);
-        String url = URLs.UPDATE_URL;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        // Membuat URL API dengan ID pengguna
+        String url = URLs.GETUSER_URL + "?id=" + userId;
+
+        // Membuat objek request GET menggunakan Volley
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            // Mendapatkan data pengguna dari respons JSON
+                            String username = response.getString("username");
+                            String email = response.getString("email");
+                            String alamat = response.getString("alamat");
+                            String gender = response.getString("gender");
+
+                            // Menampilkan data pengguna ke dalam EditText
+                            etNamaPengguna.setText(username);
+                            etEmail.setText(email);
+                            etDetailAlamat.setText(alamat);
+                            etJenisKelamin.setText(gender);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Gagal memuat data pengguna", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // Menambahkan request ke antrian request Volley
+        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+    }
+    public void updateDataUser() {
+        int userId = getLoggedInUserId();
+        String username = etNamaPengguna.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String alamat = etDetailAlamat.getText().toString().trim();
+        String gender = etJenisKelamin.getText().toString().trim();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.UPDATE_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        showDialogSukses();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Gagal mengubah data user", Toast.LENGTH_SHORT).show();
+                    }
+                }) {
             @Override
-            public void onResponse(String response) {
-                Log.e("Volley", response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Volley", error.toString());
-            }
-        }
-        ) {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
+                params.put("id", String.valueOf(userId));
                 params.put("username", username);
                 params.put("email", email);
-                params.put("gender", gender);
                 params.put("alamat", alamat);
+                params.put("gender", gender);
+
                 return params;
             }
         };
-        requestQueue.add(stringRequest);
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
+
+    private void showDialogUpdateUser(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditProfile.this);
+        builder.setTitle("Konfirmasi");
+        builder.setMessage("Apakah anda yakin ingin mengubah data?");
+
+        builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                updateDataUser();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("TIDAK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                        onBackPressed();
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    private void showDialogSukses() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(EditProfile.this);
+        builder.setTitle("Sukses");
+        builder.setMessage("Data berhasil diubah.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                onBackPressed();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
 }

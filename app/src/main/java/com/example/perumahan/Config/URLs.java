@@ -9,4 +9,5 @@ public class URLs {
     public static final String UPDATE_URL = "http://10.0.2.2:80/api/ubah.php";
     public static final String HAPUS_URL = "http://10.0.2.2:80/api/hapus.php";
     public static final String UBAHSANDI_URL = "http://10.0.2.2:80/api/ubah_password.php";
+    public static final String GETUSER_URL = "http://10.0.2.2:80/api/get_user.php";
 }
