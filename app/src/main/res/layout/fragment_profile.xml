@@ -186,61 +186,61 @@
         android:layout_marginTop="15dp"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-            <ImageView
-                android:id="@+id/icPrivacy"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/privacy_policy"/>
-            <TextView
-                android:id="@+id/txtPrivacy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hapus Akun"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/poppinssemibold"
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/icPrivacy"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_next"
-                android:layout_alignParentEnd="true"
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-            <ImageView
-                android:id="@+id/icTerms"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/terms"/>
-            <TextView
-                android:id="@+id/txtTerms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Syarat dan Ketentuan"
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/poppinssemibold"
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/icTerms"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_next"
-                android:layout_alignParentEnd="true"
-                />
-        </RelativeLayout>
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="20dp">-->
+<!--            <ImageView-->
+<!--                android:id="@+id/icPrivacy"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/privacy_policy"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/txtPrivacy"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Hapus Akun"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:fontFamily="@font/poppinssemibold"-->
+<!--                android:textSize="12sp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_toRightOf="@+id/icPrivacy"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_next"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                />-->
+<!--        </RelativeLayout>-->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginEnd="20dp">-->
+<!--            <ImageView-->
+<!--                android:id="@+id/icTerms"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/terms"/>-->
+<!--            <TextView-->
+<!--                android:id="@+id/txtTerms"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Syarat dan Ketentuan"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:fontFamily="@font/poppinssemibold"-->
+<!--                android:textSize="12sp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_toRightOf="@+id/icTerms"-->
+<!--                />-->
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_next"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                />-->
+<!--        </RelativeLayout>-->
 
         <RelativeLayout
             android:id="@+id/btnLogout"

@@ -33,46 +33,30 @@
             />
     </RelativeLayout>
 
+    
+    <ImageView
+        android:layout_width="261dp"
+        android:layout_height="66dp"
+        android:src="@drawable/component"
+        android:layout_marginTop="251dp"
+        android:layout_gravity="center"/>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtPerumahan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="PERUMAHAN"
-            android:textSize="35sp"
+            android:textAlignment="center"
+            android:text="Perumahan Versi 1.0 \n Dikembangkan Oleh Mahasiswa \n Politeknik Negeri Jember"
             android:fontFamily="@font/poppinssemibold"
-            android:textColor="@color/fontColor"
-            android:layout_marginTop="20dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Perumahan Taraktakdung"
-            android:gravity="center"
-            android:layout_marginTop="65dp"
             android:textSize="12sp"
-            android:fontFamily="@font/poppinsregular"
             android:textColor="@color/fontColor"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="70dp"
             />
+
     </RelativeLayout>
-    
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="204dp"
-        android:src="@drawable/house"
-        android:layout_marginTop="114dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Perumahan Versi 1.0 \n Dikembangkan Oleh Mahasiswa \n Politeknik Negeri Jember"
-        android:layout_marginTop="170dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:textSize="12sp"
-        android:textColor="@color/fontColor"
-        />
 
 
 </LinearLayout>
