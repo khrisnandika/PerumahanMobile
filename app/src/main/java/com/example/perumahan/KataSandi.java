@@ -26,6 +26,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.perumahan.Config.URLs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +71,14 @@ public class KataSandi extends AppCompatActivity {
                 builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ubahPassword();
+                        final String passwordBaru = etPasswordBaru.getText().toString().trim();
+                        final String konfirmasiPasswordBaru = etKonfirmasiPasswordBaru.getText().toString().trim();
+
+                        if (passwordBaru.equals(konfirmasiPasswordBaru)) {
+                            ubahPassword();
+                        } else {
+                            showDialogKonfirmasi();
+                        }
                         dialog.dismiss();
                     }
                 });
@@ -102,8 +112,28 @@ public class KataSandi extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.e("Volley", response);
-                // Tanggapan sukses dari API
-                Toast.makeText(getApplicationContext(), "Kata Sandi Berhasil Diubah", Toast.LENGTH_SHORT).show();
+                // Parsing tanggapan sebagai objek JSON
+                if (response.equalsIgnoreCase("Password berhasil diubah")) {
+                    // Kata sandi berhasil diubah
+                    showDialogSukses();
+//                    Toast.makeText(getApplicationContext(), "Kata Sandi Berhasil Diubah", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Gagal mengubah kata sandi
+                        AlertDialog.Builder builder = new AlertDialog.Builder(KataSandi.this);
+                        builder.setTitle("Gagal");
+                        builder.setMessage(response);
+
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                }
+
 
             }
         }, new Response.ErrorListener() {
@@ -131,4 +161,38 @@ public class KataSandi extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_ID, -1); // Mengembalikan nilai default -1 jika tidak ada ID tersimpan
     }
+
+    private void showDialogSukses() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(KataSandi.this);
+        builder.setTitle("Sukses");
+        builder.setMessage("Password berhasil diubah.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                onBackPressed();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    private void showDialogKonfirmasi() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(KataSandi.this);
+        builder.setTitle("Gagal");
+        builder.setMessage("Konfirmasi password salah");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
 }
