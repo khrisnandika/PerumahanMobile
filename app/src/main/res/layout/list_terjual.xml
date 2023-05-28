@@ -10,7 +10,7 @@
         android:layout_height="132dp"
         android:layout_marginBottom="21dp"
         android:background="@drawable/rounded_image"
-        android:backgroundTint="@color/secondary">
+        android:backgroundTint="#BABABA">
 
         <ImageView
             android:id="@+id/imgHome"

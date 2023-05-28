@@ -453,7 +453,9 @@ public class UploadFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
 
-                params.put("upload", imageToString(bitmap1));
+                params.put("photo1", imageToString(bitmap1));
+                params.put("photo2", imageToString(bitmap1));
+                params.put("photo3", imageToString(bitmap1));
 
                 return params;
             }
