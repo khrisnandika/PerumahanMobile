@@ -39,20 +39,20 @@
                 android:fontFamily="@font/poppinssemibold"
                 android:textSize="13sp"
                 />
-            <ImageView
-                android:id="@+id/icon1"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_below="@+id/txtRumah"
-                android:layout_marginStart="17dp"
-                android:src="@drawable/icon_status"
-                android:layout_marginTop="3dp"
-                />
+<!--            <ImageView-->
+<!--                android:id="@+id/icon1"-->
+<!--                android:layout_width="10dp"-->
+<!--                android:layout_height="10dp"-->
+<!--                android:layout_below="@+id/txtRumah"-->
+<!--                android:layout_marginStart="17dp"-->
+<!--                android:src="@drawable/icon_status"-->
+<!--                android:layout_marginTop="3dp"-->
+<!--                />-->
             <ImageView
                 android:id="@+id/icon2"
                 android:layout_width="8.66dp"
                 android:layout_height="10dp"
-                android:layout_below="@+id/txtStatus"
+                android:layout_below="@+id/txtRumah"
                 android:layout_marginStart="17dp"
                 android:src="@drawable/icon_location"
                 android:layout_marginTop="3dp"
@@ -66,24 +66,24 @@
                 android:src="@drawable/money"
                 android:layout_marginTop="3dp"
                 />
-            <TextView
-                android:id="@+id/txtStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon1"
-                android:layout_below="@+id/txtRumah"
-                android:layout_marginStart="4dp"
-                android:text="Status : Tersedia"
-                android:textColor="@color/fontColor"
-                android:fontFamily="@font/poppinsregular"
-                android:textSize="10sp"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/txtStatus"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_toRightOf="@+id/icon1"-->
+<!--                android:layout_below="@+id/txtRumah"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:text="Status : Tersedia"-->
+<!--                android:textColor="@color/fontColor"-->
+<!--                android:fontFamily="@font/poppinsregular"-->
+<!--                android:textSize="10sp"-->
+<!--                />-->
             <TextView
                 android:id="@+id/txtAlamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/icon2"
-                android:layout_below="@+id/txtStatus"
+                android:layout_below="@+id/txtRumah"
                 android:layout_marginStart="5dp"
                 android:text="Jalan Jendral Sudirman"
                 android:textColor="@color/fontColor"

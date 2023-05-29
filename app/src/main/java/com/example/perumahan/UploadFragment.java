@@ -62,9 +62,8 @@ public class UploadFragment extends Fragment {
     private String refreshFlag="0";
     private String action_flag="add";
     private static final int CAMERA_REQUEST = 1888;
-    private EditText tipeRumah, harga, daerah, alamat, jumlahKamar, jumlahKamarMandi, jumlahGarasi, luasBangunan, luasTanah, deskripsi;
+    private EditText judul, tipeRumah, harga, alamat, jumlahKamar, jumlahKamarMandi, jumlahGarasi, luasBangunan, luasTanah, deskripsi;
     private ImageView imageView1, imageView2, imageView3;
-    private ProgressDialog pDialog;
     private Perumahan perumahan;
     private Button simpan;
     private ActivityResultLauncher<Intent> activityResultLauncher1, activityResultLauncher2, activityResultLauncher3;
@@ -79,9 +78,9 @@ public class UploadFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
 
+        judul = view.findViewById(R.id.fieldJudul);
         tipeRumah = view.findViewById(R.id.fieldTipe);
         harga = view.findViewById(R.id.fieldHarga);
-        daerah = view.findViewById(R.id.fieldDaerah);
         alamat = view.findViewById(R.id.fieldAlamat);
         jumlahKamar = view.findViewById(R.id.fieldKamar);
         jumlahKamarMandi = view.findViewById(R.id.fieldKamarMandi);
@@ -299,7 +298,6 @@ public class UploadFragment extends Fragment {
         refreshFlag="1";
         final String etTipeRumah = tipeRumah.getText().toString().trim();
         final String etHarga = harga.getText().toString().trim();
-        final String etDaerah = daerah.getText().toString().trim();
         final String etAlamat = alamat.getText().toString().trim();
         final String etJumlahKamar = jumlahKamar.getText().toString().trim();
         final String etJumlahKamarMandi = jumlahKamarMandi.getText().toString().trim();
@@ -331,7 +329,6 @@ public class UploadFragment extends Fragment {
 
                 params.put("tipe_rumah", etTipeRumah);
                 params.put("harga", etHarga);
-                params.put("daerah", etDaerah);
                 params.put("alamat_rumah", etAlamat);
                 params.put("total_kamar", etJumlahKamar);
                 params.put("total_kamar_mandi", etJumlahKamarMandi);
@@ -368,7 +365,6 @@ public class UploadFragment extends Fragment {
         byteArrayOutputStream = new ByteArrayOutputStream();
         final String etTipeRumah = tipeRumah.getText().toString().trim();
         final String etHarga = harga.getText().toString().trim();
-        final String etDaerah = daerah.getText().toString().trim();
         final String etAlamat = alamat.getText().toString().trim();
         final String etJumlahKamar = jumlahKamar.getText().toString().trim();
         final String etJumlahKamarMandi = jumlahKamarMandi.getText().toString().trim();
@@ -414,7 +410,6 @@ public class UploadFragment extends Fragment {
                     params.put("foto_rumah3", baseImage3);
                     params.put("tipe_rumah", etTipeRumah);
                     params.put("harga", etHarga);
-                    params.put("daerah", etDaerah);
                     params.put("alamat_rumah", etAlamat);
                     params.put("total_kamar", etJumlahKamar);
                     params.put("total_kamar_mandi", etJumlahKamarMandi);
@@ -435,16 +430,28 @@ public class UploadFragment extends Fragment {
 
     private void uploadImage(){
         String url = "http://10.0.2.2:80/api/uploadfoto.php";
+        final String etJudul = judul.getText().toString().trim();
+        final String etTipeRumah = tipeRumah.getText().toString().trim();
+        final String etHarga = harga.getText().toString().trim();
+        final String etAlamat = alamat.getText().toString().trim();
+        final String etJumlahKamar = jumlahKamar.getText().toString().trim();
+        final String etJumlahKamarMandi = jumlahKamarMandi.getText().toString().trim();
+        final String etJumlahGarasi = jumlahGarasi.getText().toString().trim();
+        final String etLuasBangunan = luasBangunan.getText().toString().trim();
+        final String etLuasTanah = luasTanah.getText().toString().trim();
+        final String etDeskripsi = deskripsi.getText().toString().trim();
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getActivity().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                System.out.println(response);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Volley", error.toString());
+                System.out.println(error);
             }
         }
         ) {
@@ -453,9 +460,19 @@ public class UploadFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
 
-                params.put("photo1", imageToString(bitmap1));
-                params.put("photo2", imageToString(bitmap1));
-                params.put("photo3", imageToString(bitmap1));
+                params.put("foto_rumah1", imageToString(bitmap1));
+                params.put("foto_rumah2", imageToString(bitmap2));
+                params.put("foto_rumah3", imageToString(bitmap3));
+                params.put("judul", etJudul);
+                params.put("tipe_rumah", etTipeRumah);
+                params.put("harga_rumah", etHarga);
+                params.put("alamat_rumah", etAlamat);
+                params.put("total_kamar", etJumlahKamar);
+                params.put("total_kamar_mandi", etJumlahKamarMandi);
+                params.put("total_garasi", etJumlahGarasi);
+                params.put("luas_bangunan", etLuasBangunan);
+                params.put("luas_tanah", etLuasTanah);
+                params.put("deskripsi", etDeskripsi);
 
                 return params;
             }

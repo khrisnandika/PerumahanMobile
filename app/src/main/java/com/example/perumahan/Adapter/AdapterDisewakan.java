@@ -44,7 +44,7 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
 
         Glide.with(context).load(listDataDisewakan.get(position).getGambarRumah()).into(holder.image);
         holder.txtRumah.setText(listDataDisewakan.get(position).getJudulRumah());
-        holder.txtStatus.setText(listDataDisewakan.get(position).getStatusRumah());
+//        holder.txtStatus.setText(listDataDisewakan.get(position).getStatusRumah());
         holder.txtAlamat.setText(listDataDisewakan.get(position).getAlamatRumah());
         holder.txtHarga.setText(listDataDisewakan.get(position).getHargaRumah());
         holder.txtUkuran.setText(listDataDisewakan.get(position).getUkuranRumah());
@@ -69,14 +69,14 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
         ModelDisewakan modelDisewakan;
 
         ImageView image;
-        TextView txtRumah, txtStatus, txtAlamat, txtHarga, txtUkuran, txtKamar, txtKamarMandi, txtGarasi;
+        TextView txtRumah, txtAlamat, txtHarga, txtUkuran, txtKamar, txtKamarMandi, txtGarasi;
 
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
             image = itemView.findViewById(R.id.imgHome);
             txtRumah = itemView.findViewById(R.id.txtRumah);
-            txtStatus = itemView.findViewById(R.id.txtStatus);
+//            txtStatus = itemView.findViewById(R.id.txtStatus);
             txtAlamat = itemView.findViewById(R.id.txtAlamat);
             txtHarga = itemView.findViewById(R.id.txtHarga);
             txtUkuran = itemView.findViewById(R.id.txtUkuran);
@@ -92,7 +92,7 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
             int position = getBindingAdapterPosition();
             Toast.makeText(context, "position"+position, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, DetailDashboard.class);
-            intent.putExtra("id", modelDisewakan.getId());
+            intent.putExtra("id_rumah", modelDisewakan.getId());
             context.startActivity(intent);
         }
 

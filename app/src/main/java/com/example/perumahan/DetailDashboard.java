@@ -62,7 +62,7 @@ public class DetailDashboard extends AppCompatActivity {
         btnWhatsapp = findViewById(R.id.btnWhatsapp);
 
         Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
+        id = intent.getIntExtra("id_rumah", 0);
 
         tvJudul = findViewById(R.id.judul);
         tvTipe = findViewById(R.id.ukuran);
@@ -127,7 +127,7 @@ public class DetailDashboard extends AppCompatActivity {
 
     private void tampilData(){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url = "http://10.0.2.2:80/api/tampil_lutfi.php?id="+id;
+        String url = "http://10.0.2.2:80/api/tampil_lutfi.php?id_rumah="+id;
         JSONObject jsonObject = new JSONObject();
         final String requestBody = jsonObject.toString();
 
