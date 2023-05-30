@@ -4,7 +4,9 @@ import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
@@ -252,35 +254,11 @@ public class UploadFragment extends Fragment {
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadImage();
+                showDialogUploadData();
             }
         });
 
         return view;
-    }
-    //    set atau inisiasi variabel untuk inisiasi form
-//    private void initUI() {
-//        pDialog = new ProgressDialog(getActivity());
-//
-//        tipeRumah = getActivity().findViewById(R.id.fieldTipe);
-//        harga = getActivity().findViewById(R.id.fieldHarga);
-//        luasBangunan = getActivity().findViewById(R.id.fieldLuasbangunan);
-//        luasTanah = getActivity().findViewById(R.id.fieldLuastanah);
-//        deskripsi = getActivity().findViewById(R.id.fieldDeskripsi);
-//    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.btnSimpan) {
-            saveDataRumah();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -361,72 +339,72 @@ public class UploadFragment extends Fragment {
 
     }
 
-    private void uploadRumah(){
-        byteArrayOutputStream = new ByteArrayOutputStream();
-        final String etTipeRumah = tipeRumah.getText().toString().trim();
-        final String etHarga = harga.getText().toString().trim();
-        final String etAlamat = alamat.getText().toString().trim();
-        final String etJumlahKamar = jumlahKamar.getText().toString().trim();
-        final String etJumlahKamarMandi = jumlahKamarMandi.getText().toString().trim();
-        final String etJumlahGarasi = jumlahGarasi.getText().toString().trim();
-        final String etLuasBangunan = luasBangunan.getText().toString().trim();
-        final String etLuasTanah = luasTanah.getText().toString().trim();
-        final String etDeskripsi = deskripsi.getText().toString().trim();
-
-        if (bitmap1 != null || bitmap2 != null || bitmap3 != null) {
-            bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-            byte[] bytes = byteArrayOutputStream.toByteArray();
-            final String baseImage1 = Base64.encodeToString(bytes, Base64.DEFAULT);
-            final String baseImage2 = Base64.encodeToString(bytes, Base64.DEFAULT);
-            final String baseImage3 = Base64.encodeToString(bytes, Base64.DEFAULT);
-
-            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-            String url = URLs.SIMPAN_URL;
-
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    if (response.equals("success")) {
-                        Toast.makeText(getActivity().getApplicationContext(), "gambar terupload", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Log.e("error", response);
-                    }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("Volley", error.toString());
-                    Toast.makeText(getActivity().getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-            ) {
-                @Nullable
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
-
-                    params.put("foto_rumah1", baseImage1);
-                    params.put("foto_rumah2", baseImage2);
-                    params.put("foto_rumah3", baseImage3);
-                    params.put("tipe_rumah", etTipeRumah);
-                    params.put("harga", etHarga);
-                    params.put("alamat_rumah", etAlamat);
-                    params.put("total_kamar", etJumlahKamar);
-                    params.put("total_kamar_mandi", etJumlahKamarMandi);
-                    params.put("total_garasi", etJumlahGarasi);
-                    params.put("luas_bangunan", etLuasBangunan);
-                    params.put("luas_tanah", etLuasTanah);
-                    params.put("deskripsi", etDeskripsi);
-
-                    return params;
-                }
-            };
-            requestQueue.add(stringRequest);
-
-        } else {
-            Toast.makeText(getActivity().getApplicationContext(), "isi gambar terlebih dahulu", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void uploadRumah(){
+//        byteArrayOutputStream = new ByteArrayOutputStream();
+//        final String etTipeRumah = tipeRumah.getText().toString().trim();
+//        final String etHarga = harga.getText().toString().trim();
+//        final String etAlamat = alamat.getText().toString().trim();
+//        final String etJumlahKamar = jumlahKamar.getText().toString().trim();
+//        final String etJumlahKamarMandi = jumlahKamarMandi.getText().toString().trim();
+//        final String etJumlahGarasi = jumlahGarasi.getText().toString().trim();
+//        final String etLuasBangunan = luasBangunan.getText().toString().trim();
+//        final String etLuasTanah = luasTanah.getText().toString().trim();
+//        final String etDeskripsi = deskripsi.getText().toString().trim();
+//
+//        if (bitmap1 != null || bitmap2 != null || bitmap3 != null) {
+//            bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+//            byte[] bytes = byteArrayOutputStream.toByteArray();
+//            final String baseImage1 = Base64.encodeToString(bytes, Base64.DEFAULT);
+//            final String baseImage2 = Base64.encodeToString(bytes, Base64.DEFAULT);
+//            final String baseImage3 = Base64.encodeToString(bytes, Base64.DEFAULT);
+//
+//            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+//            String url = URLs.SIMPAN_URL;
+//
+//            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+//                @Override
+//                public void onResponse(String response) {
+//                    if (response.equals("success")) {
+//                        Toast.makeText(getActivity().getApplicationContext(), "gambar terupload", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Log.e("error", response);
+//                    }
+//                }
+//            }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    Log.e("Volley", error.toString());
+//                    Toast.makeText(getActivity().getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//            ) {
+//                @Nullable
+//                @Override
+//                protected Map<String, String> getParams() throws AuthFailureError {
+//                    Map<String, String> params = new HashMap<>();
+//
+//                    params.put("foto_rumah1", baseImage1);
+//                    params.put("foto_rumah2", baseImage2);
+//                    params.put("foto_rumah3", baseImage3);
+//                    params.put("tipe_rumah", etTipeRumah);
+//                    params.put("harga", etHarga);
+//                    params.put("alamat_rumah", etAlamat);
+//                    params.put("total_kamar", etJumlahKamar);
+//                    params.put("total_kamar_mandi", etJumlahKamarMandi);
+//                    params.put("total_garasi", etJumlahGarasi);
+//                    params.put("luas_bangunan", etLuasBangunan);
+//                    params.put("luas_tanah", etLuasTanah);
+//                    params.put("deskripsi", etDeskripsi);
+//
+//                    return params;
+//                }
+//            };
+//            requestQueue.add(stringRequest);
+//
+//        } else {
+//            Toast.makeText(getActivity().getApplicationContext(), "isi gambar terlebih dahulu", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     private void uploadImage(){
         String url = "http://10.0.2.2:80/api/uploadfoto.php";
@@ -444,7 +422,7 @@ public class UploadFragment extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getActivity().getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                showDialogSukses();
                 System.out.println(response);
             }
         }, new Response.ErrorListener() {
@@ -485,6 +463,44 @@ public class UploadFragment extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+    private void showDialogUploadData(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Konfirmasi");
+        builder.setMessage("Apakah anda yakin ingin mengunggah data?");
+
+        builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                uploadImage();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("TIDAK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                        onBackPressed();
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    private void showDialogSukses() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Sukses");
+        builder.setMessage("Data berhasil diunggah.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                getActivity().onBackPressed();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }

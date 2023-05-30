@@ -90,7 +90,7 @@ public class AdapterDisewakan extends RecyclerView.Adapter<AdapterDisewakan.View
         @Override
         public void onClick(View v) {
             int position = getBindingAdapterPosition();
-            Toast.makeText(context, "position"+position, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "position"+position, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, DetailDashboard.class);
             intent.putExtra("id_rumah", modelDisewakan.getId());
             context.startActivity(intent);

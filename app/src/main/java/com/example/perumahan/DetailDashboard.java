@@ -35,7 +35,7 @@ public class DetailDashboard extends AppCompatActivity {
 
 
     int index=0;
-    int fongto[]={R.drawable.home2,R.drawable.home3, R.drawable.home4, R.drawable.home5, R.drawable.home6};
+    int fongto[]={R.drawable.home2,R.drawable.home3, R.drawable.home4, R.drawable.home5};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

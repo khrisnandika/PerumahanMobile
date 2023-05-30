@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
 
     TextView logout,userName,email;
     Button editBtn;
-    RelativeLayout btnKataSandi, btnInformasi, btnLogout;
+    RelativeLayout btnKataSandi, btnInformasi, btnLogout, btnRumahUpload;
 
     private Context context;
     private static final String SHARED_PREF_NAME = "volleyregisterlogin";
@@ -57,6 +57,7 @@ public class ProfileFragment extends Fragment {
         btnKataSandi = view.findViewById(R.id.btnKataSandi);
         btnInformasi = view.findViewById(R.id.btnInformasiAplikasi);
         btnLogout = view.findViewById(R.id.btnLogout);
+        btnRumahUpload = view.findViewById(R.id.btnRumahUpload);
 
         userName = view.findViewById(R.id.txtName);
         email = view.findViewById(R.id.txtEmail);
@@ -90,6 +91,13 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), Informasi.class));
+            }
+        });
+
+        btnRumahUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), RumahDiUploadUser.class));
             }
         });
 
