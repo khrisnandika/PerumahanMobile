@@ -1,6 +1,8 @@
 package com.example.perumahan;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -13,15 +15,28 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.perumahan.Config.SharedPrefManager;
+import com.example.perumahan.Config.URLs;
+import com.example.perumahan.Config.VolleySingleton;
 import com.example.perumahan.Model.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class HomeFragment extends Fragment {
     TextView userName;
     private TextView tab1, tab2;
     private int selectedNumber = 1;
+
+    private static final String SHARED_PREF_NAME = "volleyregisterlogin";
+    private static final String KEY_ID = "keyid";
 
     DijualFragment dijualFragment = new DijualFragment();
     DisewakanFragment disewakanFragment = new DisewakanFragment();
@@ -32,16 +47,19 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        if(SharedPrefManager.getInstance(getActivity()).isLoggedIn()){
-            userName = view.findViewById(R.id.txt1);
-            User user = SharedPrefManager.getInstance(getActivity()).getUser();
-            userName.setText(user.getName());
-        }
-        else{
-            Intent intent = new Intent(getActivity(),Login.class);
-            startActivity(intent);
-            getActivity().finish();
-        }
+        userName = view.findViewById(R.id.txt1);
+//        if(SharedPrefManager.getInstance(getActivity()).isLoggedIn()){
+//            userName = view.findViewById(R.id.txt1);
+//            User user = SharedPrefManager.getInstance(getActivity()).getUser();
+//            userName.setText(user.getName());
+//        }
+//        else{
+//            Intent intent = new Intent(getActivity(),Login.class);
+//            startActivity(intent);
+//            getActivity().finish();
+//        }
+
+        loadDataUser();
 
         tab1 = view.findViewById(R.id.tabItem1);
         tab2 = view.findViewById(R.id.tabItem2);
@@ -66,6 +84,46 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void loadDataUser() {
+        // Mendapatkan ID pengguna yang sedang login
+        int userId = getLoggedInUserId();
+
+        // Membuat URL API dengan ID pengguna
+        String url = URLs.GETUSER_URL + "?id=" + userId;
+
+        // Membuat objek request GET menggunakan Volley
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            // Mendapatkan data pengguna dari respons JSON
+                            String username = response.getString("username");
+
+                            // Menampilkan data pengguna ke dalam EditText
+                            userName.setText(username);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Gagal memuat data pengguna", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // Menambahkan request ke antrian request Volley
+        VolleySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    private int getLoggedInUserId() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_ID, -1); // Mengembalikan nilai default -1 jika tidak ada ID tersimpan
     }
 
     private void selectTab(int tabNumber){

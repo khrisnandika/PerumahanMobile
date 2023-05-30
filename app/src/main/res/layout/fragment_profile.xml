@@ -31,7 +31,7 @@
         android:id="@+id/avatar_profile"
         android:layout_width="118dp"
         android:layout_height="118dp"
-        android:src="@drawable/avatar_profile"
+        android:src="@drawable/avatar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="35dp"

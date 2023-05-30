@@ -18,8 +18,17 @@ import android.widget.TextView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.perumahan.Config.SharedPrefManager;
+import com.example.perumahan.Config.URLs;
+import com.example.perumahan.Config.VolleySingleton;
 import com.example.perumahan.Model.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ProfileFragment extends Fragment {
 
@@ -28,6 +37,8 @@ public class ProfileFragment extends Fragment {
     RelativeLayout btnKataSandi, btnInformasi, btnLogout;
 
     private Context context;
+    private static final String SHARED_PREF_NAME = "volleyregisterlogin";
+    private static final String KEY_ID = "keyid";
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -47,15 +58,20 @@ public class ProfileFragment extends Fragment {
         btnInformasi = view.findViewById(R.id.btnInformasiAplikasi);
         btnLogout = view.findViewById(R.id.btnLogout);
 
-        if(SharedPrefManager.getInstance(getActivity()).isLoggedIn()){
-            userName = view.findViewById(R.id.txtName);
-            email = view.findViewById(R.id.txtEmail);
-            User user = SharedPrefManager.getInstance(getActivity()).getUser();
-            userName.setText(user.getName());
-            email.setText(user.getEmail());
+        userName = view.findViewById(R.id.txtName);
+        email = view.findViewById(R.id.txtEmail);
 
+        loadDataUser();
+
+//        if(SharedPrefManager.getInstance(getActivity()).isLoggedIn()){
+//            userName = view.findViewById(R.id.txtName);
+//            email = view.findViewById(R.id.txtEmail);
+//            User user = SharedPrefManager.getInstance(getActivity()).getUser();
+//            userName.setText(user.getName());
+//            email.setText(user.getEmail());
+//
 //            btnLogout.setOnClickListener(this::onClick);
-        }
+//        }
 //        else{
 //            Intent intent = new Intent(getActivity(),Login.class);
 //            startActivity(intent);
@@ -105,6 +121,48 @@ public class ProfileFragment extends Fragment {
 //            getActivity().finish();
 //        }
 //    }
+private void loadDataUser() {
+    // Mendapatkan ID pengguna yang sedang login
+    int userId = getLoggedInUserId();
+
+    // Membuat URL API dengan ID pengguna
+    String url = URLs.GETUSER_URL + "?id=" + userId;
+
+    // Membuat objek request GET menggunakan Volley
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        // Mendapatkan data pengguna dari respons JSON
+                        String username = response.getString("username");
+                        String emaill = response.getString("email");
+
+                        // Menampilkan data pengguna ke dalam EditText
+                        userName.setText(username);
+                        email.setText(emaill);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Gagal memuat data pengguna", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+    // Menambahkan request ke antrian request Volley
+    VolleySingleton.getInstance(getActivity().getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+}
+
+    private int getLoggedInUserId() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_ID, -1); // Mengembalikan nilai default -1 jika tidak ada ID tersimpan
+    }
+
     public void logout() {
         SharedPrefManager.getInstance(getActivity()).logout();
         Intent intent = new Intent(getActivity(), Login.class);

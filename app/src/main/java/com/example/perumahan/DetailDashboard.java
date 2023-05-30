@@ -1,14 +1,11 @@
 package com.example.perumahan;
 
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,38 +15,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
-import com.example.perumahan.Adapter.AdapterDisewakan;
-import com.example.perumahan.Config.SharedPrefManager;
-import com.example.perumahan.Model.ModelDisewakan;
-import com.example.perumahan.Model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DetailDashboard extends AppCompatActivity {
     ImageButton belakang,maju;
     ImageSwitcher action_image;
-    TextView tvJudul, tvTipe, tvAlamat, tvStatus, tvGarasi, tvLuasBangunan, tvLuasTanah, tvKamar, tvKamarMandi, tvDeskripsi, tvHarga;
+    TextView tvJudul, tvTipe, tvAlamat, tvGarasi, tvLuasBangunan, tvLuasTanah, tvKamar, tvKamarMandi, tvDeskripsi, tvHarga;
     int id;
     Button btnWhatsapp;
 
 
     int index=0;
-    int fongto[]={R.drawable.fotodash,R.drawable.bg_image};
+    int fongto[]={R.drawable.home2,R.drawable.home3, R.drawable.home4, R.drawable.home5, R.drawable.home6};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
